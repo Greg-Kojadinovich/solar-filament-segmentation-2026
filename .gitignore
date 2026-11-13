@@ -218,3 +218,36 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local competition data and generated experiment outputs
+/data/
+/cv_outputs/
+*.mp4
+*.gif
+
+# Local credentials and macOS metadata
+kaggle.json
+.env.*
+!.env.example
+.DS_Store
+
+# Hugging Face local credentials and project-local cache
+.huggingface/
+.cache/huggingface/
+hf_token
+hf_token.txt
+huggingface_token
+huggingface_token.txt
+
+# Reference material and local authoring/build artifacts
+/Research/
+/ESAIRResearch/
+/ESAIRPoster/
+/TopScoreNotebooks/
+*.pages
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz

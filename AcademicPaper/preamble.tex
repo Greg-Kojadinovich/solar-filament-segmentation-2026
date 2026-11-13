@@ -1,0 +1,7 @@
+% Local preview support; replace with the organizer's preamble when available.
+\newif\ifguideStyle
+\newcommand{\guide}[1]{%
+  \ifguideStyle
+    {\color{gray!65}\itshape #1}%
+  \fi
+}
