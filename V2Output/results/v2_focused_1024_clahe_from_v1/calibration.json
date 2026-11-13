@@ -1,0 +1,176 @@
+{
+  "selected": {
+    "unet": {
+      "method": "unet",
+      "threshold": 0.35,
+      "min_area": 256
+    }
+  },
+  "candidates": [
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.35,
+        "min_area": 64
+      },
+      "scores": {
+        "pq": 0.40568515398350624,
+        "dice": 0.6751527564755662,
+        "iou": 0.5207992055746733,
+        "tp": 4.75,
+        "fp": 4.28125,
+        "fn": 2.661458333333333,
+        "split_relations": 0.328125,
+        "merge_relations": 0.11458333333333333
+      }
+    },
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.35,
+        "min_area": 256
+      },
+      "scores": {
+        "pq": 0.4285489876005869,
+        "dice": 0.6750514285453006,
+        "iou": 0.5212720999966696,
+        "tp": 4.666666666666666,
+        "fp": 3.3333333333333335,
+        "fn": 2.744791666666667,
+        "split_relations": 0.31770833333333337,
+        "merge_relations": 0.11458333333333333
+      }
+    },
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.5,
+        "min_area": 64
+      },
+      "scores": {
+        "pq": 0.40439794637368354,
+        "dice": 0.6760394282165678,
+        "iou": 0.5225324501663171,
+        "tp": 4.630208333333333,
+        "fp": 4.276041666666666,
+        "fn": 2.78125,
+        "split_relations": 0.34895833333333337,
+        "merge_relations": 0.09895833333333333
+      }
+    },
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.5,
+        "min_area": 256
+      },
+      "scores": {
+        "pq": 0.4200558525154049,
+        "dice": 0.6732456551073642,
+        "iou": 0.5195606872113296,
+        "tp": 4.494791666666667,
+        "fp": 3.2239583333333335,
+        "fn": 2.916666666666667,
+        "split_relations": 0.296875,
+        "merge_relations": 0.09895833333333333
+      }
+    },
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.65,
+        "min_area": 64
+      },
+      "scores": {
+        "pq": 0.39578526381479134,
+        "dice": 0.6741557550745547,
+        "iou": 0.5208516352001717,
+        "tp": 4.484375,
+        "fp": 4.359375,
+        "fn": 2.927083333333333,
+        "split_relations": 0.3229166666666667,
+        "merge_relations": 0.09895833333333333
+      }
+    },
+    {
+      "parameters": {
+        "method": "unet",
+        "threshold": 0.65,
+        "min_area": 256
+      },
+      "scores": {
+        "pq": 0.4073922982567403,
+        "dice": 0.6649947436383061,
+        "iou": 0.5099677833458165,
+        "tp": 4.3125,
+        "fp": 3.15625,
+        "fn": 3.098958333333333,
+        "split_relations": 0.25,
+        "merge_relations": 0.09895833333333333
+      }
+    }
+  ],
+  "tuning_filenames": [
+    "20170125133734Ch.jpeg",
+    "20121114172254Bh.jpeg",
+    "20140414020354Uh.jpeg",
+    "20120726071914Th.jpeg",
+    "20160302133734Ch.jpeg",
+    "20110324082614Th.jpeg",
+    "20170701235630Lh.jpeg",
+    "20110803164914Mh.jpeg",
+    "20120730135454Bh.jpeg",
+    "20110902073614Th.jpeg",
+    "20160518011654Uh.jpeg",
+    "20140112180134Ch.jpeg",
+    "20180804234530Lh.jpeg",
+    "20150806082034Lh.jpeg",
+    "20161110151454Bh.jpeg",
+    "20141013195834Ch.jpeg",
+    "20150820152254Bh.jpeg",
+    "20130811140254Bh.jpeg",
+    "20151228024254Uh.jpeg",
+    "20220721185332Bh.jpeg",
+    "20181101230010Mh.jpeg",
+    "20150531082034Lh.jpeg",
+    "20181024232430Lh.jpeg",
+    "20110326170914Mh.jpeg",
+    "20121218063534Lh.jpeg",
+    "20180714000010Mh.jpeg",
+    "20121219063154Uh.jpeg",
+    "20140710083214Th.jpeg",
+    "20171106171510Mh.jpeg",
+    "20110617063134Lh.jpeg",
+    "20130212153254Bh.jpeg",
+    "20190701123830Ch.jpeg"
+  ],
+  "preprocessing": {
+    "image_size": 1024,
+    "batch_size": 2,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "additional_epochs": 40,
+    "patience": 8,
+    "min_delta": 0.0001,
+    "hours": 2.0,
+    "reserve_seconds": 600,
+    "clahe": true,
+    "clip_limit": 2.0,
+    "tile_grid": 8,
+    "calibration_images": 32,
+    "thresholds": [
+      0.35,
+      0.5,
+      0.65
+    ],
+    "min_areas": [
+      64,
+      256
+    ]
+  },
+  "checkpoint_sha256": "aa1ba837971bca13be649a2c8b14a313830157f7b6f7ffb7b510e08a9c149350",
+  "baseline_checkpoint_sha256": "92ffa38c11b6d6649027b49e6a187dcc5c457b7155e5974fb2adf4ea0579cd91",
+  "smoke_test": false,
+  "annotation_sha256": "5da9e92b5a1a1947fd5d57adb6688269625c48ec1ef884daf2a01618c9ed54a1",
+  "note": "Tuning selection metrics, not an independent holdout or Kaggle score."
+}

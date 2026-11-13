@@ -1,0 +1,41 @@
+{
+  "smoke_test": false,
+  "rows": 1470,
+  "images": 180,
+  "zero_detection_images": [
+    "20170708164010Mh.jpeg",
+    "20200310113230Ch.jpeg",
+    "20211214174010Mh.jpeg"
+  ],
+  "parameters": {
+    "method": "unet",
+    "threshold": 0.35,
+    "min_area": 256
+  },
+  "preprocessing": {
+    "image_size": 1024,
+    "batch_size": 2,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "additional_epochs": 40,
+    "patience": 8,
+    "min_delta": 0.0001,
+    "hours": 2.0,
+    "reserve_seconds": 600,
+    "clahe": true,
+    "clip_limit": 2.0,
+    "tile_grid": 8,
+    "calibration_images": 32,
+    "thresholds": [
+      0.35,
+      0.5,
+      0.65
+    ],
+    "min_areas": [
+      64,
+      256
+    ]
+  },
+  "checkpoint_sha256": "aa1ba837971bca13be649a2c8b14a313830157f7b6f7ffb7b510e08a9c149350",
+  "csv_sha256": "023f447ee1d749cfa71a42f7b33833e31891cd3947144ff3f8da4d7c91598dab"
+}

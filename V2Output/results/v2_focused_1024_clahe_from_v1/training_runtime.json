@@ -1,0 +1,8 @@
+{
+  "status": "early_stopped",
+  "seconds": 3527.8412990369998,
+  "completed_additional_epochs": 21,
+  "best_additional_epoch": 13,
+  "device": "cuda",
+  "note": "Fine-tuning with fresh optimizer, not exact optimizer-state resume."
+}

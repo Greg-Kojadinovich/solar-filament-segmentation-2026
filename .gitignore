@@ -254,3 +254,7 @@ huggingface_token.txt
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Disposable API upload copy; canonical notebook lives at the repository root.
+/kaggle-v3/solar_filament_CV_V3.ipynb
+/kaggle-v4/solar_filament_CV_V4.ipynb

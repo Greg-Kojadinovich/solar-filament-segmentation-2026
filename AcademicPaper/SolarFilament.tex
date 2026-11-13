@@ -51,7 +51,7 @@
 % \email{second.author@example.com}  % <- Replace with your own email
 
 \begin{abstract}
-    This report describes our solution to the Solar Filament Segmentation Challenge~2026, a Kaggle competition on automatic segmentation of solar filaments in GONG H-$\alpha$ observations. We implement a single-channel U-Net with a ResNet18 encoder, annotator-specific supervision, observation-day-grouped validation, and full-resolution instance-mask export. A second-version experimental protocol evaluates higher-resolution inputs, contrast-limited adaptive histogram equalization (CLAHE), and budgeted hyperparameter search using three grouped outer folds and inner validation holdouts. These extensions are hypotheses under evaluation, not demonstrated improvements. Leaderboard scores and V2 measurements are pending.
+    This report describes our solution to the Solar Filament Segmentation Challenge~2026, a Kaggle competition on automatic segmentation of solar filaments in GONG H-$\alpha$ observations. We implement a single-channel U-Net with a ResNet18 encoder, annotator-specific supervision, observation-day-grouped validation, and full-resolution instance-mask export. The first submitted model achieved public leaderboard PQ of 0.29. A second-version experimental protocol evaluates higher-resolution inputs, contrast-limited adaptive histogram equalization (CLAHE), and budgeted hyperparameter search using three grouped outer folds and inner validation holdouts.     These extensions are hypotheses under evaluation. Focused V2 achieved public PQ of 0.32; grouped-fold measurements remain pending.
 \end{abstract}
 
 \maketitle
@@ -163,13 +163,15 @@ not local parameter selection.
     \end{itemize}}
 
 \subsection{First-version reporting status}
-The baseline was configured for 20 training epochs. The approximately
-48-minute run duration is participant-reported and is not a measured
-training-only benchmark. Submission acceptance and the Kaggle score remain
-pending at the time of this draft. Local holdout measurements and final
-runtime details will be inserted from the saved experiment artifacts;
-no quantitative performance claim is made here before those results
-are verified.
+The baseline trained for 20 epochs. Saved training and validation time
+was 2252.6 seconds (37.5 minutes) on a Tesla T4; this excludes downstream
+calibration, inference, and rendering. Kaggle submission 58301531 completed
+with public PQ of 0.29, verified through the API on November 13, 2026.
+The CSV contained 1421 instances after processing 180 test images; three
+zero-detection image omissions were accepted for this submission.
+Local holdout PQ was 0.3350, Dice 0.6405, and IoU 0.4885 on 105 physical
+images. These local and leaderboard figures use different evaluation data
+and must not be interpreted as interchangeable estimates.
 
 \subsection{Metrics and comparisons}
 Local evaluation reports Panoptic Quality (PQ)~\cite{pq}, foreground
@@ -189,7 +191,9 @@ scores must not be interpreted as a paired ablation.}
 \hline
 Experiment & PQ & Dice & Kaggle PQ\\
 \hline
-V1: frozen 512 baseline & --- & --- & pending\\
+V1: frozen 512 baseline & 0.3350 & 0.6405 & 0.29\\
+V2: focused fine-tuning & --- & --- & 0.32\\
+V3: YOLO + crop refinement, repaired & --- & --- & 0.35\\
 V2: 512, raw & --- & --- & ---\\
 V2: 512, CLAHE & --- & --- & ---\\
 V2: 1024, raw & --- & --- & ---\\
@@ -207,6 +211,32 @@ Outer-fold scores characterize individual fold models or the selection
 procedure, not independent evaluation of the final fold-model ensemble.
 
 \section{Version 2: Experimental Protocol}\label{sec:v2}
+\subsection{Focused continuation experiment}
+A separate focused experiment starts from the verified V1 checkpoint
+with a fresh AdamW optimizer at learning rate $10^{-4}$ and batch size
+two. It changes input resolution to 1024 pixels and applies CLAHE with
+clip limit two and an $8\times8$ tile grid after resizing. It retains
+the V1 training and tuning partitions, including the same calibration
+image subset, and does not reevaluate holdout labels for selection.
+Up to 40 additional epochs are permitted, with early stopping at patience
+eight and significant-loss decrease $10^{-4}$, plus a plateau scheduler.
+The inherited weights are evaluated at additional epoch zero under the
+new preprocessing and retained if no later checkpoint improves tuning loss.
+CUDA mixed precision is used for model operations with float32 loss
+reductions. This is fine-tuning, not an optimizer-state resume.
+
+The cooperative two-hour allowance reserves ten minutes for calibration
+and test inference. V1 tuning loss decreased from 0.18129 at epoch 18
+to 0.17807 at epoch 20, motivating further investigation but not proving
+that insufficient epochs caused the leaderboard score. The experiment
+changes several factors together and therefore cannot establish a causal
+benefit from longer training, resolution, or CLAHE individually.
+Kaggle submission 58304132 completed with public PQ of 0.32, verified
+through the API on November 13, 2026. This is a 0.03 absolute increase
+over V1, not evidence that any single changed factor caused the gain.
+Grouped-fold controls below remain a separate study.
+
+\subsection{Grouped-fold search}
 The new notebook implements three observation-day-grouped outer folds.
 Each outer training partition reserves approximately 20\% of its days
 as an inner validation holdout. This uses inner holdout tuning, not an
@@ -268,6 +298,47 @@ selected weights, configuration, fold manifests, package versions,
 calibration, and final report before the organizers' form is submitted.
 
 
+
+\section{Version 3: Instance-Aware Experiment}
+V3 replaces connected-component instance extraction from a semantic
+foreground model with YOLO11s instance segmentation~\cite{ultralyticsseg}.
+A separate U-Net with a ResNet18 encoder refines square crops around
+detected instances. The working hypothesis is that explicit instance
+proposals and local refinement may improve instance overlap and separation;
+The repaired V3 submission achieved public PQ of 0.35, compared with
+0.32 for focused V2 and 0.29 for V1. These exploratory runs change multiple
+factors and do not isolate an architectural effect or establish parity
+with a supplied reference notebook.
+
+The detector uses 1024-pixel input, one filament class, up to 60 epochs,
+and patience eight. All annotator label sets remain separate training
+targets within the fixed observation-day split. The crop refiner uses
+256-pixel crops with 1.8 times context, up to 20 epochs, Dice/BCE loss,
+and lowest tuning-loss checkpoint selection. Training allowances are
+75 minutes for the detector and 30 minutes for the refiner; preparation,
+calibration, and inference add overhead.
+Detector confidence, crop threshold, minimum area, and the choice between
+YOLO-only and refined output are selected on the same tuning subset.
+The initial V3 submission (58315901) was rejected for overlapping instance
+masks and provides no valid leaderboard measurement. Offline repair of
+the saved predictions, without retraining, produced submission 58316663;
+its completed public PQ of 0.35 was verified through the Kaggle API.
+The corrected pipeline assigns contested pixels to the earliest prediction
+in proposal order and removes empty or below-minimum-area remnants.
+This deterministic disjoint-mask policy is applied during both calibration
+and export, with an independent zero-overlap validation. Previously saved
+calibration metrics do not characterize the corrected predictions.
+
+EDA plots connect grayscale histograms and spatial gradients to the
+annotated images, illustrate resolution-dependent target sampling,
+and follow normalized polygon coordinates through crop transformations.
+Post-training review separates pixel errors from pairwise instance IoU
+and PQ matching. Training crops use true instance bounds, whereas inference
+crops use detector proposals: this mismatch and duplicate refinements are
+limitations. The refiner cannot recover undetected instances.
+An empty refinement falls back to its actual detector mask and is audited;
+no mask is invented for an empty observation. V3 is a fixed-split
+experiment, not grouped $K$-fold cross-validation.
 
 % ==================================== %
 %            ACKNOWLEDGMENT            %

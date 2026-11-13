@@ -1,0 +1,15 @@
+{
+  "id": "gregkoja/solar-filament-cv-v4-longer-training",
+  "title": "Solar Filament CV V4 Longer Training",
+  "code_file": "solar_filament_CV_V4.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": ["filament-segmentation-2026"],
+  "kernel_sources": [],
+  "model_sources": []
+}
