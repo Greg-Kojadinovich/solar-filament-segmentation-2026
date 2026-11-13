@@ -1,5 +1,62 @@
-# solar-filament-segmentation-2026
-Automatic Segmentation of Solar Filaments using Computer Vision algorithms (with or without fitting) from GONG's H-Alpha Observations
+# **Solar Filament Segmentation Challenge 2026**
+
+# Solar filament CV: train, evaluate, and export
+
+## Gregory Kojadinovich II
+
+# **Kaggle GPU pipeline:**
+
+grayscale observations + COCO annotations -> day-grouped train/tuning/holdout -> pretrained U-Net -> threshold/area calibration -> individual masks -> full-resolution COCO RLE CSV.
+
+An intensity/contrast CV baseline is evaluated on the same splits. 
+
+Run on Kaggle with the competition data attached, a GPU accelerator, and Internet enabled for installation and pretrained weights. 
+
+Default: 20 epochs; this is a starting configuration, not a demonstrated optimal model.
+
+## Baseline video showcase
+
+[![Baseline video frame: solar observation, human annotation, and predicted filament masks with bounding boxes](baselinevideo/thumbnail.jpg)](baselinevideo/download.mp4)
+
+**[Watch or download the baseline filament review video](baselinevideo/download.mp4)**
+
+*Actual frame at 00:30. Click the thumbnail to open the video.*
+
+### CV architecture
+
+```mermaid
+flowchart TD
+    A["2048 x 2048 grayscale observation"] --> B["Resize to 512 x 512; normalize to [-1, 1]"]
+    B --> C["U-Net: ImageNet-pretrained ResNet18 encoder"]
+    C --> D["U-Net decoder with encoder skip connections"]
+    D --> E["Single-channel logits"]
+    E --> F["Sigmoid: filament probabilities"]
+    F --> G["Resize probabilities to 2048 x 2048"]
+    G --> H["Tuning-selected threshold and minimum area"]
+    H --> I["8-connected components: filament instances"]
+    I --> J["COCO RLE masks and submission CSV"]
+    I --> K["Mask overlays and derived bounding boxes"]
+    L["COCO annotations: separate annotator targets"] --> M["Day-grouped train / tuning / holdout"]
+    M --> N["Training: AdamW and Dice + BCE loss"]
+    E --> N
+    N -.-> C
+    M --> O["Tuning: best-loss checkpoint and post-processing calibration"]
+    O -.-> H
+```
+
+Bounding boxes are visualization post-processing, not learned detection
+outputs. The baseline uses a fixed grouped split, not K-fold evaluation.
+
+The downloaded Kaggle video reviews 707 labeled observations frame by frame
+at two frames per second (5 minutes 53.5 seconds). The review displays the
+solar observation, a human annotation, and model-predicted filament masks
+with bounding boxes. Boxes are derived from connected predicted regions;
+they are not a separate learned object detector.
+
+This sequence includes training, tuning, and holdout imagery, so it is a
+qualitative review, not an independent test-set performance measurement.
+It is the baseline review video, not the small locally trained demonstration.
+If GitHub does not play the MP4 inline, use its download control to view it.
 
 ## Status
 

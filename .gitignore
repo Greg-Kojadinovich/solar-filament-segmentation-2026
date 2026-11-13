@@ -223,6 +223,7 @@ __marimo__/
 /data/
 /cv_outputs/
 *.mp4
+!/baselinevideo/download.mp4
 *.gif
 
 # Local credentials and macOS metadata
