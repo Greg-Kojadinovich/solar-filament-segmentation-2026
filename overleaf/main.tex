@@ -1,0 +1,238 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath,amssymb,booktabs,graphicx,url}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\pending}{\textit{Pending}}
+\title{A Reproducible Grayscale U-Net Baseline for Solar Filament Segmentation}
+\author{\IEEEauthorblockN{Author name to be confirmed}
+\IEEEauthorblockA{Affiliation and contact to be supplied}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Solar filaments exhibit thin, irregular structures that make pixel segmentation
+and separation of individual objects challenging. This preliminary technical
+report describes a reproducible computer-vision baseline for the Solar Filament
+Segmentation Challenge 2026. A grayscale U-Net with an ImageNet-initialized
+ResNet18 encoder is trained using binary cross-entropy and soft Dice loss.
+Annotation sets are preserved by annotator, while observing-day grouping
+separates training, tuning, and holdout data. An intensity-contrast baseline
+provides a classical comparison. Probabilities are restored to the original
+image dimensions before connected-component extraction and compressed COCO
+mask export. The first 20-epoch run completed in approximately 48 minutes as
+reported by the experimenter. Numerical segmentation metrics and the accepted
+competition score remain to be inserted from saved experiment outputs.
+This draft makes no claim of state-of-the-art performance or architectural novelty.
+\end{abstract}
+\begin{IEEEkeywords}
+solar filaments, H-alpha, semantic segmentation, U-Net, reproducibility
+\end{IEEEkeywords}
+
+\section{Introduction}
+Reliable identification of filaments in solar H-alpha observations supports
+the analysis of solar magnetic structures and eruptive activity.
+Filaments are difficult targets because they are often faint, elongated,
+and bounded by fine barbs. A method can achieve substantial foreground overlap
+while incorrectly merging neighboring filaments or fragmenting one filament
+into several predictions. Pixel overlap and object-level detection quality
+must therefore be distinguished.
+
+The MAGFiLO dataset provides manually annotated GONG observations with
+filament segmentations, bounding boxes, spines, and chirality labels
+\cite{magfilo}. The present work studies the competition's segmentation task,
+not the prediction of chirality or solar eruptions. Our contribution is an
+explicitly documented baseline and evaluation/export procedure, rather than a
+new neural architecture.
+
+\section{Related Work and Research Context}
+MAGFiLO v1.0 reports 10,244 annotated filaments from 1,593 observations and
+inter-annotator agreement of $\kappa=0.66$ \cite{magfilo}. These published dataset
+totals should not be confused with the physical JPEG counts in the competition
+release or with annotator-specific image records.
+
+The supplied ESAIR literature addresses two complementary problems.
+H-Alpha Anomalyzer detects corrupt observations using regional mean-intensity
+statistics and explainable grid-level anomaly scores \cite{softwarex,icdmw}.
+Its image-level anomaly F1 is not a segmentation score. Supervised SVM and
+one-class SVM in the comparative study are quality-control classifiers,
+not the supervised filament segmenter implemented here.
+
+The 2026 ESAIR poster describes U-Net segmentation with multiscale IoU,
+geometry-based fragment grouping, and ConvNeXt classification of extracted
+filament regions \cite{poster}. We do not reproduce the poster's loss or
+grouping algorithm: their complete implementation details are not present
+in the supplied poster. Our baseline instead uses an established U-Net
+\cite{unet} and connected components. Bounding boxes are derived from masks;
+no separate box detector or bounding-box regression model is trained.
+
+\section{Data and Experimental Protocol}
+The reviewed competition release contains 707 training JPEGs and 180
+unlabeled test JPEGs. Training annotations contain 1,154 annotator-specific
+image records and 8,199 filament annotations. Images are $2048\times2048$
+8-bit grayscale observations. Multiple annotator records can refer to the
+same photograph.
+
+Each annotator-specific annotation set is retained as a separate supervised
+target. Its filament masks are unioned into a binary foreground target.
+Different annotators' masks are not merged into consensus labels. All
+chirality categories are treated as foreground. Polygons are decoded using
+COCO-compatible mask operations, rather than interpreting the JSON as a
+filename-to-mask dictionary.
+
+Observing days are assigned to disjoint training, tuning, and holdout
+partitions with seed 2026. For the inspected release this yields 499, 103,
+and 105 physical images, corresponding to 827, 161, and 166 annotation sets.
+Same-day grouping prevents duplicate photographs and same-day observations
+from crossing partitions; it does not guarantee independence of long-lived
+events across adjacent days. Multiply annotated images receive multiple
+training exposures, a limitation of the chosen target policy.
+
+\section{Methods}
+\subsection{Grayscale neural segmentation}
+Inputs are resized bilinearly to $512\times512$. Binary targets use nearest
+neighbor resizing. With grayscale value $v_i$, the input normalization is
+$x_i=2(v_i/255)-1$. Paired quarter-turn rotations and horizontal flips are
+applied during training.
+
+The default network is U-Net with a ResNet18 encoder \cite{resnet}, not FPN.
+ImageNet weights initialize the encoder, adapted by the segmentation library
+to one input channel. Hidden convolutions and nonlinearities remain present.
+The output head produces logits $z_i$; setting its activation to \texttt{None}
+does not remove hidden activations. Probabilities are
+\begin{equation}
+p_i=\sigma(z_i)=(1+\exp(-z_i))^{-1}.
+\end{equation}
+This is supervised binary semantic segmentation, not continuous-target
+regression.
+
+For binary reference $y_i$, the loss is
+\begin{equation}
+L=\tfrac12 L_{\mathrm{BCE}}+\tfrac12 L_{\mathrm{Dice}},
+\end{equation}
+\begin{equation}
+L_{\mathrm{BCE}}=-\frac{1}{N}\sum_i
+[y_i\log p_i+(1-y_i)\log(1-p_i)],
+\end{equation}
+\begin{equation}
+L_{\mathrm{Dice}}=1-\frac{1}{B}\sum_{b=1}^{B}
+\frac{2\sum_i p_{bi}y_{bi}+1}{\sum_i p_{bi}+\sum_i y_{bi}+1}.
+\end{equation}
+The implementation evaluates BCE directly from logits for stability.
+AdamW uses learning rate $3\times10^{-4}$ and batch size eight.
+The baseline trains for 20 epochs, selecting the checkpoint with the lowest
+tuning loss. It has no baseline early stopping or learning-rate scheduler.
+
+\subsection{Classical comparator and instance extraction}
+The contrast comparator estimates a smoothed background
+$B=G_\sigma*I$ and selects dark departures within an eroded heuristic disk mask:
+\begin{equation}
+M(x)=D(x)\land[B(x)-I(x)>\tau_c].
+\end{equation}
+It is a tuned heuristic rather than a trained SVM or a reproduction of
+Anomalyzer. Sunspots, limb artifacts, and clouds can confound it.
+
+Neural probabilities are bilinearly restored to $2048\times2048$ before
+thresholding. Eight-connected components define predicted instances.
+Probability thresholds $\{0.35,0.50,0.65\}$ and minimum original-resolution
+areas $\{64,256\}$ are selected using tuning PQ on at most 32 physical tuning
+images. The contrast baseline searches thresholds $\{0.025,0.04,0.06\}$ with
+the same area choices. These values are search candidates, not demonstrated
+optimal settings.
+
+\subsection{Evaluation and artifacts}
+For foreground pixel counts,
+\begin{equation}
+\mathrm{IoU}=\frac{TP}{TP+FP+FN},\qquad
+\mathrm{Dice}=\frac{2TP}{2TP+FP+FN}.
+\end{equation}
+Binary foreground Dice equals pixel F1 for the same masks and conventions.
+Object-level PQ \cite{pq} uses one-to-one matches at IoU strictly greater
+than 0.5:
+\begin{equation}
+\mathrm{PQ}=
+\frac{\sum_{(p,g)\in\mathcal{M}}\mathrm{IoU}(p,g)}
+{|\mathcal{M}|+\tfrac12 FP_{\mathrm{obj}}+\tfrac12 FN_{\mathrm{obj}}}.
+\end{equation}
+Local evaluation ignores chirality and averages annotator-specific scores
+within each physical image before averaging images. Split/merge diagnostics
+use overlap greater than 0.1. Local PQ is not asserted to reproduce every
+private competition evaluator edge case.
+
+The notebook saves weights, annotation and checkpoint hashes, split manifests,
+calibration candidates, loss history, runtime, figures, and installed packages.
+Video galleries display human outlines where available and predicted masks
+and mask-derived boxes. Frames span different dates and stations; they do not
+constitute a continuous solar evolution sequence.
+
+\section{Preliminary Results and Planned Comparisons}
+\begin{table}[t]
+\centering
+\caption{Baseline evidence status. Pending entries must be replaced with
+actual saved outputs before submission. No leaderboard score is inferred.}
+\begin{tabular}{ll}
+\toprule
+Quantity & Status/value\\
+\midrule
+Training budget & 20 epochs\\
+Reported run duration & approximately 48 min\\
+Selected checkpoint epoch & \pending\\
+Holdout PQ / Dice / IoU & \pending\\
+Contrast holdout PQ & \pending\\
+Accepted leaderboard score & \pending\\
+\bottomrule
+\end{tabular}
+\end{table}
+The experimenter reported approximately 48 minutes for the first run; the
+timed scope and hardware must be checked against runtime artifacts.
+The initial test export reported zero retained instances for three of 180
+images. This may indicate missed faint filaments, area filtering, or genuinely
+empty scenes; absent test labels, the cause cannot be established from counts.
+No artificial filament masks should be inserted to conceal this outcome.
+Candidate export omits filament rows for zero-detection images and records
+them explicitly. Evaluator acceptance of that representation remains to be
+confirmed by the actual competition response.
+
+Two optional follow-up experiments are implemented but not yet measured:
+fresh ImageNet initialization for at most 30 epochs at $3\times10^{-4}$, and
+fine-tuning the baseline best checkpoint for at most ten new epochs at
+$10^{-4}$. Both use a new optimizer and early stopping after five consecutive
+epochs without tuning-loss improvement greater than $10^{-4}$. Fine-tuning
+retains its starting checkpoint as a candidate. It is not exact optimizer-state
+resume from epoch 20. Both are calibrated on the same tuning subset; neither
+should be selected using hidden-test feedback or repeated holdout inspection.
+
+\section{Discussion and Limitations}
+Correct annotation mapping and full-resolution export are necessary for a
+meaningful baseline. The supplied reference notebooks use a direct filename
+lookup on a COCO top-level dictionary; this returns empty targets for the
+reviewed release. Their saved falling losses alone therefore do not establish
+filament learning. Their saved inference paths also encode resized masks
+without restoring the required canvas. This observation concerns the supplied
+source versions, not independently verified leaderboard rankings.
+
+Our implementation repairs those data-flow issues but does not establish
+superior accuracy. Downsampling can erase thin structures, and upsampling
+cannot recover information already lost. Binary supervision discards instance
+identity during learning. Connected components can merge touching filaments
+or split fragmented ones. A single split and seed do not establish statistical
+significance. Future work should isolate resolution, boundary losses,
+geometry grouping, quality-aware weighting, and architecture choices using
+controlled grouped experiments.
+
+\section{Conclusion}
+We describe an established-model grayscale segmentation baseline with explicit
+annotation handling, grouped evaluation, auditable calibration, and full-size
+mask export. Quantitative conclusions await insertion of measured holdout
+results and accepted competition scores. The final report must identify the
+actual selected weights, environment, runtime scope, and failure cases rather
+than attributing performance to architecture reputation alone.
+
+\section*{Reproducibility and draft checklist}
+Before submitting: insert confirmed authors; use the organizer's exact
+template and verify its four-page limit; insert actual metrics, hardware and
+figures; resolve zero-detection evaluator acceptance; add a public repository
+and video link; include weights and exact dependencies. The Overleaf project
+was restricted during draft preparation. This source is a portable IEEE-style
+draft, not a confirmed rendering in that project.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}
