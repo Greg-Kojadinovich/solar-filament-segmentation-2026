@@ -176,9 +176,8 @@ Local evaluation reports Panoptic Quality (PQ)~\cite{pq}, foreground
 Dice, and intersection over union. PQ matches instances one-to-one
 at intersection over union strictly greater than 0.5. Scores are averaged
 across annotators within each physical image, then across images.
-Local PQ is an implementation-level diagnostic, not a claim of exact
-equivalence to the competition evaluator. Final leaderboard results must
-be obtained from Kaggle.
+Local PQ is a diagnostic; equivalence to the competition evaluator has
+not been established. Final leaderboard results must come from Kaggle.
 
 \begin{table}[t]
 \centering
@@ -210,30 +209,31 @@ procedure, not independent evaluation of the final fold-model ensemble.
 \section{Version 2: Experimental Protocol}\label{sec:v2}
 The new notebook implements three observation-day-grouped outer folds.
 Each outer training partition reserves approximately 20\% of its days
-as an inner validation holdout. This is nested grouped evaluation with
-inner holdout tuning, not an additional inner $K$-fold loop. Fresh
+as an inner validation holdout. This uses inner holdout tuning, not an
+additional inner $K$-fold loop. Fresh
 ImageNet initialization is used for every candidate in every fold.
 The distinction between parameter selection and outer evaluation addresses
 selection bias~\cite{varma2006}. Previously inspected V1 holdout images are
 not described as a new untouched final test set.
 
-Four controlled configurations compare $512/1024$-pixel inputs crossed
-with raw/CLAHE preprocessing~\cite{opencvclahe}. CLAHE uses clip limit 2
+Four controls compare 512- and 1024-pixel inputs, with and without
+CLAHE~\cite{opencvclahe}. CLAHE uses clip limit 2
 and an $8\times8$ tile grid after resizing; the same transformation is used
 in training and inference. These controls use learning rate
 $3\times10^{-4}$, weight decay $10^{-2}$, and batch size two. Two additional
 seeded random candidates at 1024 pixels with CLAHE sample learning rates
-log-uniformly over $[10^{-5},10^{-3}]$, weight decay over
-$[10^{-5},10^{-2}]$, batch size from $\{2,4\}$, and clip limit from
-$\{1.5,2,3\}$. This bounded search follows random-search
-methodology~\cite{bergstra2012}; it does not establish a global optimum.
+log-uniformly from $10^{-5}$ to $10^{-3}$. Weight decay is sampled
+log-uniformly from $10^{-5}$ to $10^{-2}$. Batch size is two or four,
+and clip limit is 1.5, 2, or 3. This follows random-search
+methodology~\cite{bergstra2012}, without establishing a global optimum.
 
 Each trial permits up to 60 epochs, with inner-loss early stopping
 (patience eight, minimum significant decrease $10^{-4}$).
 A plateau scheduler halves the learning rate after three non-improving
-epochs. Checkpoints retain the strictly lowest inner loss. Thresholds
-$\{0.35,0.5,0.65\}$ and minimum areas $\{64,256\}$ original-resolution
-pixels are calibrated using up to 12 seeded inner-validation images.
+epochs. Checkpoints retain the strictly lowest inner loss.
+Threshold candidates are 0.35, 0.5, and 0.65. Minimum area candidates
+are 64 and 256 pixels at the original resolution.
+Calibration uses up to 12 seeded inner validation images.
 Candidate selection uses inner PQ only; outer labels do not determine
 checkpoints, thresholds, or the selected candidate.
 
@@ -259,8 +259,8 @@ generalization or justify a particular epoch count.
 The paired V2 controls will test these directional hypotheses; no
 numerical gain or superiority claim is made before measurement.
 
-The optional test export averages the three inner-selected fold models'
-full-resolution probabilities, using the median of their inner-calibrated
+The optional test export averages probabilities from the three selected
+fold models at full resolution, using the median of their calibrated
 thresholds and areas. This post-processing choice is a heuristic, not
 separately optimized ensemble calibration. Test inference never selects
 hyperparameters. The public reproducibility package must include the
