@@ -25,20 +25,20 @@
 \input{preamble}
 
 % Guide styling: \guideStyletrue = show gray italic hints; \guideStylefalse = omit them
-\guideStyletrue
+\guideStylefalse
 % \guideStylefalse
 
 \begin{document}
 
-\title{\guide{Your Title Here}}  % Replace this with your title
+\title{Reproducible Grayscale U-Net Segmentation of Solar Filaments}
 \subtitle{A Solution to the Solar Filament Segmentation Challenge 2026} % DO NOT CHANGE
 
 
-\author{\guide{Gregory Kojadinovich II}}
+\author{Gregory Kojadinovich II}
 \affiliation{%
-  \institution{\guide{Europa Waters LLC}}  % <- Optional (remove if you are not currently affiliated with any institute)
-  \city{\guide{South Lake Tahoe, CA}}
-  \country{\guide{USA}}
+  \institution{Europa Waters LLC}
+  \city{South Lake Tahoe, CA}
+  \country{USA}
 }
 \email{gregkoja3343@icloud.com}   % <- Replace with your own email
 
@@ -51,7 +51,7 @@
 % \email{second.author@example.com}  % <- Replace with your own email
 
 \begin{abstract}
-    This report describes our solution to the Solar Filament Segmentation Challenge~2026, a Kaggle competition on automatic segmentation of solar filaments in GONG H-$\alpha$ observations. \guide{Continue the abstract with the details of your work.}
+    This report describes our solution to the Solar Filament Segmentation Challenge~2026, a Kaggle competition on automatic segmentation of solar filaments in GONG H-$\alpha$ observations. We implement a single-channel U-Net with a ResNet18 encoder, annotator-specific supervision, observation-day-grouped validation, and full-resolution instance-mask export. A second-version experimental protocol evaluates higher-resolution inputs, contrast-limited adaptive histogram equalization (CLAHE), and budgeted hyperparameter search using three grouped outer folds and inner validation holdouts. These extensions are hypotheses under evaluation, not demonstrated improvements. Leaderboard scores and V2 measurements are pending.
 \end{abstract}
 
 \maketitle
@@ -93,6 +93,46 @@ Guide mode is on.}
         \item one or more graphics showing a few examples of the segmentations.
     \end{itemize}}
 
+\subsection{First-version model and data pipeline}
+The baseline uses U-Net~\cite{unet} with an ImageNet-pretrained ResNet18
+encoder~\cite{resnet}, one grayscale input channel, and a single output
+logit per pixel. The $2048\times2048$ observations are resized to
+$512\times512$. Intensities are transformed as
+$x'=2x/255-1$; paired rotations and horizontal flips augment training
+images and masks. AdamW uses a learning rate of $3\times10^{-4}$ and a
+batch size of eight for a maximum of 20 epochs. The baseline does not
+use early stopping or a learning-rate scheduler.
+
+The loss combines binary cross-entropy with a soft Dice loss:
+\begin{equation}
+ \mathcal{L}=\tfrac12\mathcal{L}_{\mathrm{BCE}}+
+ \tfrac12\left[1-\frac{2\sum_i p_i y_i+1}
+ {\sum_i p_i+\sum_i y_i+1}\right],
+\end{equation}
+where $p_i=\sigma(z_i)$ and $y_i$ denotes binary foreground.
+Dice is computed per image and averaged across the batch.
+The output head has no activation; sigmoid is applied explicitly,
+while internal nonlinearities remain part of the network.
+
+At inference, probabilities are resized to the original resolution before
+thresholding. Eight-connected components exceeding the tuning-selected
+minimum area define instances, which are encoded as compressed COCO
+run-length masks. Bounding boxes are derived from these components for
+visual review, not predicted by a separate learned detector. Images with
+no retained components are audited without fabricating filament masks;
+competition acceptance of omitted image rows remains to be verified.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\linewidth]{../baselinevideo/thumbnail.jpg}
+ \caption{Frame from the downloaded baseline review video: observation,
+ human annotation, and model overlay with component-derived boxes.
+ The labeled sequence includes training images and is qualitative evidence,
+ not an independent performance estimate. A one-minute looping preview
+ is prepared for the repository README.}
+ \label{fig:review}
+\end{figure}
+
 % ==================================== %
 %              EVALUATION              %
 % ==================================== %
@@ -131,24 +171,101 @@ runtime details will be inserted from the saved experiment artifacts;
 no quantitative performance claim is made here before those results
 are verified.
 
-\section{Next Steps: Version 2}\label{sec:v2}
-Version~2 will investigate observation-day-grouped $K$-fold
-cross-validation. Each fold will start from a fresh model initialization,
-with all images and annotator targets from an observing day assigned
-to the same fold. The fold count and compute budget remain to be selected.
-Checkpoint selection and threshold calibration will use an inner grouped
-validation split of each fold's training data, leaving the outer validation
-fold for evaluation only. Fold-level metrics will be reported with their
-mean and standard deviation rather than presenting a single split as
-cross-validation. Previously inspected holdout data will not be described
-as an untouched final test set for subsequent model selection.
+\subsection{Metrics and comparisons}
+Local evaluation reports Panoptic Quality (PQ)~\cite{pq}, foreground
+Dice, and intersection over union. PQ matches instances one-to-one
+at intersection over union strictly greater than 0.5. Scores are averaged
+across annotators within each physical image, then across images.
+Local PQ is an implementation-level diagnostic, not a claim of exact
+equivalence to the competition evaluator. Final leaderboard results must
+be obtained from Kaggle.
 
-Additional planned experiments compare higher-resolution inputs and
-contrast-limited adaptive histogram equalization (CLAHE), individually
-and in combination, against the unchanged baseline. Pre-processing will
-be identical during training and inference. These are proposed extensions,
-not components of the first-version submission, and any improvement
-will require measured validation evidence.
+\begin{table}[t]
+\centering
+\caption{Results placeholders. Dashes denote unmeasured values, not zero
+performance. V1 and V2 use different evaluation protocols; their local
+scores must not be interpreted as a paired ablation.}
+\label{tab:pending}
+\begin{tabular}{lccc}
+\hline
+Experiment & PQ & Dice & Kaggle PQ\\
+\hline
+V1: frozen 512 baseline & --- & --- & pending\\
+V2: 512, raw & --- & --- & ---\\
+V2: 512, CLAHE & --- & --- & ---\\
+V2: 1024, raw & --- & --- & ---\\
+V2: 1024, CLAHE & --- & --- & ---\\
+V2: inner-selected procedure & --- & --- & ---\\
+V2: fold-model ensemble & --- & --- & pending\\
+\hline
+\end{tabular}
+\end{table}
+V2 outer-fold values will be reported as mean $\pm$ sample standard
+deviation only after all three folds finish, alongside executed epochs,
+stopping reason, runtime, hardware, and completed-trial counts.
+Missing or budget-truncated results will be disclosed, not imputed.
+Outer-fold scores characterize individual fold models or the selection
+procedure, not independent evaluation of the final fold-model ensemble.
+
+\section{Version 2: Experimental Protocol}\label{sec:v2}
+The new notebook implements three observation-day-grouped outer folds.
+Each outer training partition reserves approximately 20\% of its days
+as an inner validation holdout. This is nested grouped evaluation with
+inner holdout tuning, not an additional inner $K$-fold loop. Fresh
+ImageNet initialization is used for every candidate in every fold.
+The distinction between parameter selection and outer evaluation addresses
+selection bias~\cite{varma2006}. Previously inspected V1 holdout images are
+not described as a new untouched final test set.
+
+Four controlled configurations compare $512/1024$-pixel inputs crossed
+with raw/CLAHE preprocessing~\cite{opencvclahe}. CLAHE uses clip limit 2
+and an $8\times8$ tile grid after resizing; the same transformation is used
+in training and inference. These controls use learning rate
+$3\times10^{-4}$, weight decay $10^{-2}$, and batch size two. Two additional
+seeded random candidates at 1024 pixels with CLAHE sample learning rates
+log-uniformly over $[10^{-5},10^{-3}]$, weight decay over
+$[10^{-5},10^{-2}]$, batch size from $\{2,4\}$, and clip limit from
+$\{1.5,2,3\}$. This bounded search follows random-search
+methodology~\cite{bergstra2012}; it does not establish a global optimum.
+
+Each trial permits up to 60 epochs, with inner-loss early stopping
+(patience eight, minimum significant decrease $10^{-4}$).
+A plateau scheduler halves the learning rate after three non-improving
+epochs. Checkpoints retain the strictly lowest inner loss. Thresholds
+$\{0.35,0.5,0.65\}$ and minimum areas $\{64,256\}$ original-resolution
+pixels are calibrated using up to 12 seeded inner-validation images.
+Candidate selection uses inner PQ only; outer labels do not determine
+checkpoints, thresholds, or the selected candidate.
+
+The default wall-time allowance for nested training and scoring is two
+hours, configurable by researchers. Training receives 55\% of each
+remaining job's equal time share, reserving the remainder for evaluation.
+Checks occur between batches and images; individual operations and
+installation/download/export overhead may exceed the allowance.
+Eighteen trials of up to 60 epochs are unlikely to finish under this
+budget. Time-truncated training is not evidence of convergence.
+Longer-budget runs use a new experiment identifier; the notebook preserves
+completed artifacts and explicitly marks incomplete folds.
+
+\subsection{Hypotheses, not observed improvements}
+\textbf{H1:} Higher resolution may retain thin structures lost during
+downsampling and improve filament recall or PQ, at increased memory and
+runtime cost. \textbf{H2:} CLAHE may expose faint structures but may also
+amplify artifacts and increase false positives.
+\textbf{H3:} Longer training with early stopping and a plateau scheduler
+may improve validation performance if V1 is underfit, but may instead
+overfit. A decreasing training loss alone does not establish improved
+generalization or justify a particular epoch count.
+The paired V2 controls will test these directional hypotheses; no
+numerical gain or superiority claim is made before measurement.
+
+The optional test export averages the three inner-selected fold models'
+full-resolution probabilities, using the median of their inner-calibrated
+thresholds and areas. This post-processing choice is a heuristic, not
+separately optimized ensemble calibration. Test inference never selects
+hyperparameters. The public reproducibility package must include the
+selected weights, configuration, fold manifests, package versions,
+calibration, and final report before the organizers' form is submitted.
 
 
 

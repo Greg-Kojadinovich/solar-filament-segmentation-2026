@@ -16,11 +16,11 @@ Default: 20 epochs; this is a starting configuration, not a demonstrated optimal
 
 ## Baseline video showcase
 
-[![Baseline video frame: solar observation, human annotation, and predicted filament masks with bounding boxes](baselinevideo/thumbnail.jpg)](baselinevideo/download.mp4)
+[![One-minute looping baseline review: observations, annotations, and filament predictions](baselinevideo/preview-60s.gif)](baselinevideo/preview-60s.mp4)
 
-**[Watch or download the baseline filament review video](baselinevideo/download.mp4)**
+**[Watch or download the one-minute baseline clip](baselinevideo/preview-60s.mp4)**
 
-*Actual frame at 00:30. Click the thumbnail to open the video.*
+*The 60-second GIF loops automatically. Click it for the compact MP4.*
 
 ### CV architecture
 
@@ -47,8 +47,9 @@ flowchart TD
 Bounding boxes are visualization post-processing, not learned detection
 outputs. The baseline uses a fixed grouped split, not K-fold evaluation.
 
-The downloaded Kaggle video reviews 707 labeled observations frame by frame
-at two frames per second (5 minutes 53.5 seconds). The review displays the
+This clip shows the first 60 seconds of the downloaded Kaggle video, whose
+full sequence reviews 707 labeled observations at two frames per second.
+The review displays the
 solar observation, a human annotation, and model-predicted filament masks
 with bounding boxes. Boxes are derived from connected predicted regions;
 they are not a separate learned object detector.

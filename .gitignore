@@ -225,6 +225,8 @@ __marimo__/
 *.mp4
 !/baselinevideo/download.mp4
 *.gif
+!/baselinevideo/preview-60s.mp4
+!/baselinevideo/preview-60s.gif
 
 # Local credentials and macOS metadata
 kaggle.json
