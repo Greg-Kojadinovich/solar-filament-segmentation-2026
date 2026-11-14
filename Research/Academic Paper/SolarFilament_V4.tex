@@ -41,9 +41,8 @@ isolated measurement of cropping's effect.
 \begin{teaserfigure}
 \centering
 \includegraphics[width=0.80\textwidth]{../Baseline Video/thumbnail.jpg}
-\caption{Baseline review frame: observation, annotation, and model overlay.
-The sequence includes training images and is qualitative, not independent
-evaluation.}
+\caption{Baseline V1 model: observation, human annotation, and model overlay.
+The sequence includes training images demonstrating the computer vision model's training with V1.}
 \label{fig:baseline}
 \end{teaserfigure}
 \maketitle
@@ -61,18 +60,18 @@ evaluation.}
 
 \smallskip
 \normalsize
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
 \hline
-Run & Main model & Image size & Crop refiner \\
+Run & Main model & Image size & Crop refiner & GPU \\
 \hline
-V1 & ResNet18 U-Net & 512 px & None \\
-V2 & ResNet18 U-Net & 1024 px & None \\
-V3 & YOLO11s-seg & 1024 px & ResNet18 U-Net, 256 px \\
-V5 & 5 $\times$ YOLO11s-seg & 1024 px & ResNet34 U-Net, fold-selected \\
-V7 & 5 $\times$ YOLO11s-seg & 1024 px & None \\
+V1 & ResNet18 U-Net & 512 px & None & T4x2 \\
+V2 & ResNet18 U-Net & 1024 px & None & T4x2 \\
+V3 & YOLO11s-seg & 1024 px & ResNet18 U-Net, 256 px & T4x2 \\
+V5 & 5 $\times$ YOLO11s-seg & 1024 px & ResNet34 U-Net, fold-selected & T4x2 \\
+V7 & 5 $\times$ YOLO11s-seg & 1024 px & None & T4x2 \\
 \hline
 \end{tabular}
-\caption{Verified public PQ and pipeline configurations. V7 scores 0.10
+\caption{Verified public PQ and computer vision pipeline configurations. V7 scores 0.10
 below V5 and 0.09 below V3. These are whole-pipeline comparisons.}
 \label{fig:scores}
 \end{figure*}
@@ -101,14 +100,11 @@ Panoptic quality measures recognition and overlap~\cite{pq}:
 {|TP|+\tfrac12|FP|+\tfrac12|FN|}.
 \end{equation}
 Local instance matching requires IoU strictly greater than 0.5.
-The public scores are single-run measurements without repeated-seed
-uncertainty; foreground overlap and CSV validity do not substitute for PQ.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.75\textwidth]{figures-v2/workflow.pdf}
-\caption{Semantic and instance-aware pipelines. Crop refinement is a local
-prediction stage, not a crop of the competition's evaluation area.}
+\caption{U-Net Semantic Segmentation pipelines.}
 \label{fig:workflow}
 \end{figure*}
 
@@ -117,14 +113,14 @@ prediction stage, not a crop of the competition's evaluation area.}
 \includegraphics[width=0.75\textwidth]{figures-v2/mask_comparison.pdf}
 \caption{V1--V3 predictions for a disagreement-selected test crop:
 \texttt{20210708060030Lh.jpeg}, $x=[1502,1767)$, $y=[1328,1673)$.
-Colors identify instances, not correctness. This panel does not depict V7.}
+Colors identify filament instances.}
 \label{fig:masks}
 \end{figure*}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.75\textwidth]{figures-v2/folds_and_fusion.pdf}
-\caption{Day-grouped folds and five-model fusion. IN includes training and
+\caption{Per-Day-grouped folds and five-day ensemble-model fusion. IN includes training and
 inner tuning; OUT is held out. Each instance and pixel requires three votes.}
 \label{fig:folds}
 \end{figure*}
@@ -132,40 +128,33 @@ inner tuning; OUT is held out. Each instance and pixel requires three votes.}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.75\textwidth]{figures-v2/training_and_geometry.pdf}
-\caption{Saved V2/V3 training and prediction diagnostics. Prediction
-geometry describes outputs, not accuracy; this panel does not depict V7.}
+\caption{V2/V3 training and prediction diagnostics.}
 \label{fig:diagnostics}
 \end{figure*}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{results-review/loss_by_epoch.pdf}
-\caption{Saved losses by epoch. V2 epochs are additional to V1; V3's crop
-refiner and detector use different objectives. Verified V5/V7 training
-histories are unavailable and are not fabricated.}
-\label{fig:loss}
-\end{figure*}
-
 \section{Models and Results}
-\subsection{V1 and V2: Semantic Baselines}
+\subsection{V1 and V2: U-Net Semantic Baselines}
 V1 uses U-Net~\cite{unet} with an ImageNet-pretrained ResNet18
 encoder~\cite{resnet}, 512-pixel input, AdamW, batch 8, 20 epochs,
 and equal-weight Dice/BCE loss. Thresholding and eight-connected components
-produce instances. V2 fine-tunes V1 at 1024 pixels with
+produce instances. Each foreground pixel can connect to its eight neighbors. 
+After thresholding the U-Net output, each connected foreground region becomes 
+one predicted filament instance. Diagonally touching pixels belong to the same region.
+V2 fine-tunes V1 at 1024 pixels with
 CLAHE~\cite{opencvclahevisual}, batch 2, and learning rate $10^{-4}$.
 It selects additional epoch 13 and stops at 21. Recorded training-stage
 runtimes are 37.5 and 58.8 minutes, respectively. Submissions 58301531
 and 58304132 score 0.29 and 0.32 PQ.
 
-\subsection{V3: Proposals and Crop Refinement}
+\subsection{V3: Crop Refinement}
 YOLO11s-seg~\cite{ultralyticsvisual} proposes instances at 1024 pixels;
-a ResNet18 U-Net refines $256\times256$ crops. The detector completed
+and the ResNet18 U-Net refines $256\times256$ crops. The detector completed
 47 epochs and part of epoch 48, with a reported 1.254-hour detector run;
 the refiner completed four epochs. The original CSV was rejected for
 overlapping masks. Offline disjoint-mask repair without retraining produced
 submission 58316663, scoring 0.35 PQ.
 
-\subsection{V5: Five-Fold Detector/Refiner Pipeline}
+\subsection{V5: YOLO11s with ResNet34 Refiner Pipeline}
 Five independent YOLO11s-seg/ResNet34-U-Net pairs use day-grouped folds.
 Inner tuning chooses confidence, area, and YOLO-only versus refined output;
 outer labels do not select these settings~\cite{varma2006}.
@@ -189,7 +178,14 @@ verified through the Kaggle API on November 14, 2026.
 The exported CSV contains 2,091 disjoint masks across all 180 images.
 Successful validation did not imply improved segmentation.
 
-\section{Discussion and Conclusions}
+\section{Discussion}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{results-review/loss_by_epoch.pdf}
+\caption{V1, V2, V3 Training Losses by Epoch.}
+\label{fig:loss}
+\end{figure*}
+
 V7's larger detector epoch allowance did not outperform the crop-capable
 V3/V5 pipelines. The 0.10 PQ decrease from V5 to V7 supports prioritizing
 local crop refinement in the next controlled experiment. Crops allow a
@@ -204,12 +200,17 @@ test labels it cannot be equated with additional false positives.
 The score decrease demonstrates that predicting more valid instances is
 not sufficient.
 
-Figure~\ref{fig:loss} shows V1 tuning loss minimized at its final epoch,
-while V2 fluctuated after additional epoch 13. V3 refiner tuning loss
+Figure~\ref{fig:loss} shows the expected overall decline in training loss
+during optimization. V1's best checkpoint was epoch 20, selected by its
+lowest tuning loss. V2's training loss followed a relatively smooth
+downward trend with small fluctuations, while tuning loss fluctuated
+after its minimum at additional epoch 13. Falling training loss alone
+does not establish improved generalization. V3 refiner tuning loss
 fell from 0.1636 to 0.1318 before its budget stop. Longer refiner training
 merits testing, not a convergence claim. Losses from different objectives
 and input scales are not directly comparable.
 
+\section{Conclusions}
 I recommend retaining the V5 pipeline as the best verified configuration
 and testing matched YOLO-only/refined outputs with identical detectors,
 splits, and budgets. Feature and threshold tuning should address boundaries,

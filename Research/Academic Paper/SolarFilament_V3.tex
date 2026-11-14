@@ -39,9 +39,8 @@ split, model configurations, ensemble, and limits of the available evidence.
 \begin{teaserfigure}
 \centering
 \includegraphics[width=0.85\textwidth]{../Baseline Video/thumbnail.jpg}
-\caption{Baseline review frame with observation, annotation, and model
-overlay. The sequence includes training images and is qualitative, not
-independent evaluation.}
+\caption{Baseline V1 review frame with observation, annotation, and model
+overlay.}
 \label{fig:baseline}
 \end{teaserfigure}
 \maketitle
@@ -60,12 +59,12 @@ independent evaluation.}
 \normalsize
 \begin{tabular}{lllll}
 \hline
-Run & Main model & Image size & Refiner \\
+Run & Main model & Image size & Refiner & GPU \\
 \hline
-V1 & ResNet18 U-Net & 512 px & No \\
-V2 & ResNet18 U-Net & 1024 px & No \\
-V3 & YOLO11s-seg & 1024 px & ResNet18 U-Net \\
-V5 & 5 $\times$ YOLO11s-seg & 1024 px & ResNet34 U-Net, fold-selected \\
+V1 & ResNet18 U-Net & 512 px & No & T4x2 \\
+V2 & ResNet18 U-Net & 1024 px & No & T4x2 \\
+V3 & YOLO11s-seg & 1024 px & ResNet18 U-Net & T4x2 \\
+V5 & 5 $\times$ YOLO11s-seg & 1024 px & ResNet34 U-Net, fold-selected & T4x2 \\
 \hline
 \end{tabular}
 \caption{Public PQ and pipeline summary. Runtimes for V1 and V2 are their
@@ -97,8 +96,8 @@ day-grouped splits, and separate annotator targets. No score parity is claimed.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.80\textwidth]{figures-v2/workflow.pdf}
-\caption{Semantic and instance-aware pipelines. Training, tuning, and test
-inference are distinct.}
+\caption{U-Net Semantic Segmentation Computer Vision ML pipelines. Training, tuning, and test
+inference are distinct image sets fed to the pipeline.}
 \label{fig:workflow}
 \end{figure*}
 
@@ -122,19 +121,8 @@ Each IN partition includes training and inner tuning; OUT is held out.}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.80\textwidth]{figures-v2/training_and_geometry.pdf}
-\caption{Saved training and prediction diagnostics. V2 selects additional
-epoch 13 and stops at 21; V3 refiner tuning loss improves over four completed
-epochs. Test-set prediction geometry is descriptive, not accuracy.}
+\caption{V1, V2, and V3 prediction diagnostics..}
 \label{fig:diagnostics}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{results-review/loss_by_epoch.pdf}
-\caption{Saved training and tuning losses by epoch. V2 epochs are additional
-to V1; V3 detector curves show distinct training loss components. Scored V5
-histories are unavailable.}
-\label{fig:loss}
 \end{figure*}
 
 \section{Data and Evaluation}
@@ -194,7 +182,23 @@ establish that it improved performance; the per-fold selections and training
 cost require the saved run records.
 
 \section{Discussion and Reproducibility}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{results-review/loss_by_epoch.pdf}
+\caption{Saved training and tuning losses by epoch. V2 epochs are additional
+to V1; V3 detector curves show distinct training loss components. Scored V5
+histories are unavailable.}
+\label{fig:loss}
+\end{figure*}
+
 The 0.07 absolute PQ increase from V1 to V5 reflects CV pipeline architecture changes. 
+
+The training loss curves show the expected overall decline during
+optimization. V1's best checkpoint was epoch 20, selected by its lowest
+tuning loss. V2's training loss followed a relatively smooth downward
+trend with small fluctuations, while its best tuning loss occurred at
+additional epoch 13. Falling training loss alone does not establish
+improved generalization.
 
 Figure~\ref{fig:loss} shows V1 tuning loss reaches its minimum at epoch 20:
 longer training merits testing. V2 reaches its minimum at additional epoch
@@ -202,8 +206,7 @@ longer training merits testing. V2 reaches its minimum at additional epoch
 tuning loss falls from 0.1636 to 0.1318 over four epochs before its budget
 stop, motivating longer training without proving convergence. Detector loss
 declines, but late validation metrics fluctuate. Full-image, crop and detector
-losses are not directly comparable or substitutes for PQ. Scored V5 loss
-histories are unavailable.
+losses are not directly comparable or substitutes for PQ. 
 
 The accepted V5 CSV contains 1,127 masks across 177 images; three
 images have no retained predictions. The
