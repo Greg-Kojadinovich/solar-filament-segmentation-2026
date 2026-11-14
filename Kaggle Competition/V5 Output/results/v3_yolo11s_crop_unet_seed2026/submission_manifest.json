@@ -1,0 +1,22 @@
+{
+  "rows": 1417,
+  "images": 180,
+  "parameters": {
+    "mode": "refined",
+    "confidence": 0.25,
+    "refiner_threshold": 0.5,
+    "min_area": 20
+  },
+  "hashes": {
+    "yolo_best.pt": "723c2223e7c7c0ade31a93fcde78cf110cda2a29dccd6b9724ce71ccfd142af9",
+    "refiner_best.pt": "0b855e120a5d9ad5c4b08cbf87f6c597e29651f5109a5f552916ba87b85916d6"
+  },
+  "annotation_sha256": "5da9e92b5a1a1947fd5d57adb6688269625c48ec1ef884daf2a01618c9ed54a1",
+  "csv_sha256": "9634a69207dc905921ebd947896b8bb2b27f888cfd6d14da1799fa495eaa0685",
+  "smoke_test": false,
+  "zero_detection_images": [
+    "20170708164010Mh.jpeg",
+    "20200310113230Ch.jpeg",
+    "20211214174010Mh.jpeg"
+  ]
+}

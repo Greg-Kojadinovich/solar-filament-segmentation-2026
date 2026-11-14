@@ -1,0 +1,5 @@
+names:
+  0: filament
+path: /kaggle/working/v3_yolo11s_crop_unet_seed2026/yolo_dataset
+train: images/train
+val: images/val

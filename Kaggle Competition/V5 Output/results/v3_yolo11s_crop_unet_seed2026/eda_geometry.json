@@ -1,0 +1,1564 @@
+{
+  "policy": "training-only sample, one annotation set per physical image",
+  "images": [
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotator_sets": 1,
+      "instances": 10,
+      "foreground_fraction": 0.0054552555084228516
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotator_sets": 1,
+      "instances": 17,
+      "foreground_fraction": 0.011008262634277344
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotator_sets": 1,
+      "instances": 5,
+      "foreground_fraction": 0.0013289451599121094
+    },
+    {
+      "filename": "20171123222130Lh.jpeg",
+      "annotator_sets": 3,
+      "instances": 4,
+      "foreground_fraction": 0.008753299713134766
+    },
+    {
+      "filename": "20210329015250Uh.jpeg",
+      "annotator_sets": 1,
+      "instances": 2,
+      "foreground_fraction": 0.00021791458129882812
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotator_sets": 1,
+      "instances": 8,
+      "foreground_fraction": 0.002409219741821289
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotator_sets": 1,
+      "instances": 9,
+      "foreground_fraction": 0.004405498504638672
+    },
+    {
+      "filename": "20170323041730Lh.jpeg",
+      "annotator_sets": 1,
+      "instances": 3,
+      "foreground_fraction": 0.002523660659790039
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotator_sets": 1,
+      "instances": 7,
+      "foreground_fraction": 0.0033042430877685547
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotator_sets": 3,
+      "instances": 7,
+      "foreground_fraction": 0.00348663330078125
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotator_sets": 1,
+      "instances": 13,
+      "foreground_fraction": 0.006237983703613281
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotator_sets": 2,
+      "instances": 8,
+      "foreground_fraction": 0.0021753311157226562
+    },
+    {
+      "filename": "20180805232510Mh.jpeg",
+      "annotator_sets": 2,
+      "instances": 1,
+      "foreground_fraction": 0.0006000995635986328
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotator_sets": 2,
+      "instances": 9,
+      "foreground_fraction": 0.005876064300537109
+    },
+    {
+      "filename": "20180318020350Uh.jpeg",
+      "annotator_sets": 3,
+      "instances": 2,
+      "foreground_fraction": 0.0004143714904785156
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotator_sets": 1,
+      "instances": 9,
+      "foreground_fraction": 0.0024590492248535156
+    },
+    {
+      "filename": "20170103030554Uh.jpeg",
+      "annotator_sets": 3,
+      "instances": 3,
+      "foreground_fraction": 0.0005972385406494141
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotator_sets": 2,
+      "instances": 10,
+      "foreground_fraction": 0.004487752914428711
+    },
+    {
+      "filename": "20150125172714Mh.jpeg",
+      "annotator_sets": 3,
+      "instances": 3,
+      "foreground_fraction": 0.001283407211303711
+    },
+    {
+      "filename": "20170122034654Uh.jpeg",
+      "annotator_sets": 1,
+      "instances": 4,
+      "foreground_fraction": 0.0013854503631591797
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotator_sets": 2,
+      "instances": 6,
+      "foreground_fraction": 0.010432958602905273
+    },
+    {
+      "filename": "20210331231510Mh.jpeg",
+      "annotator_sets": 2,
+      "instances": 1,
+      "foreground_fraction": 0.0008175373077392578
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotator_sets": 1,
+      "instances": 7,
+      "foreground_fraction": 0.0029053688049316406
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotator_sets": 1,
+      "instances": 9,
+      "foreground_fraction": 0.0026407241821289062
+    }
+  ],
+  "instances": [
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "17a7867a-611e-4c72-9e97-651ff8cd813d",
+      "area": 7253.0,
+      "bbox_width": 240.0,
+      "bbox_height": 173.0,
+      "elongation": 1.3872832369942196,
+      "bbox_fill": 0.1746868978805395
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "d726145a-1ffc-4944-b347-78aaf8bcc35c",
+      "area": 3223.0,
+      "bbox_width": 258.0,
+      "bbox_height": 212.0,
+      "elongation": 1.2169811320754718,
+      "bbox_fill": 0.05892569840573351
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "df214907-475b-48ec-92aa-b67d2af2d7fb",
+      "area": 647.0,
+      "bbox_width": 60.0,
+      "bbox_height": 21.0,
+      "elongation": 2.857142857142857,
+      "bbox_fill": 0.5134920634920634
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "ddc4bbef-7a75-4525-bf76-3c3bf3bee974",
+      "area": 1066.0,
+      "bbox_width": 57.0,
+      "bbox_height": 41.0,
+      "elongation": 1.3902439024390243,
+      "bbox_fill": 0.45614035087719296
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "81422190-f46d-41fc-b5e3-f2c2a7dfb750",
+      "area": 3646.0,
+      "bbox_width": 159.0,
+      "bbox_height": 154.0,
+      "elongation": 1.0324675324675325,
+      "bbox_fill": 0.14890141305235643
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "d02c3041-9876-4372-b2e8-4d1d84a214a0",
+      "area": 922.0,
+      "bbox_width": 105.0,
+      "bbox_height": 34.0,
+      "elongation": 3.088235294117647,
+      "bbox_fill": 0.2582633053221289
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "ceb8d2bc-782c-4070-adb9-b7ed61796970",
+      "area": 1167.0,
+      "bbox_width": 65.0,
+      "bbox_height": 50.0,
+      "elongation": 1.3,
+      "bbox_fill": 0.35907692307692307
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "25e68b1f-caa6-41a4-b65a-e9ba1451263c",
+      "area": 1826.0,
+      "bbox_width": 122.0,
+      "bbox_height": 40.0,
+      "elongation": 3.05,
+      "bbox_fill": 0.37418032786885247
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "9282f0c1-7d02-4f71-adae-92b6c8ceab03",
+      "area": 1602.0,
+      "bbox_width": 67.0,
+      "bbox_height": 72.0,
+      "elongation": 1.0746268656716418,
+      "bbox_fill": 0.332089552238806
+    },
+    {
+      "filename": "20130211063134Lh.jpeg",
+      "annotation_id": "c4d00020-d489-4322-b7f4-317cffb25174",
+      "area": 1529.0,
+      "bbox_width": 139.0,
+      "bbox_height": 30.0,
+      "elongation": 4.633333333333334,
+      "bbox_fill": 0.36666666666666664
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "e5636c69-5d91-4212-ac08-ae68d97dae6f",
+      "area": 11959.0,
+      "bbox_width": 269.0,
+      "bbox_height": 422.0,
+      "elongation": 1.5687732342007434,
+      "bbox_fill": 0.10534893144699518
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "38eb1188-30e0-4ad8-a8e6-2f4b8634134e",
+      "area": 1387.0,
+      "bbox_width": 137.0,
+      "bbox_height": 119.0,
+      "elongation": 1.1512605042016806,
+      "bbox_fill": 0.08507636631294854
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "6b14c63a-21e6-4915-9410-6dc3c3344385",
+      "area": 557.0,
+      "bbox_width": 64.0,
+      "bbox_height": 37.0,
+      "elongation": 1.7297297297297298,
+      "bbox_fill": 0.2352195945945946
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "e4636262-3d87-48b6-aa5f-fc3d0c505f5f",
+      "area": 278.0,
+      "bbox_width": 21.0,
+      "bbox_height": 17.0,
+      "elongation": 1.2352941176470589,
+      "bbox_fill": 0.7787114845938375
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "9d72e222-36d6-46af-ad8d-25bef0ebc56d",
+      "area": 7193.0,
+      "bbox_width": 218.0,
+      "bbox_height": 287.0,
+      "elongation": 1.31651376146789,
+      "bbox_fill": 0.11496659527538919
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "ba159b74-d428-4648-84c6-7b611bee3bbe",
+      "area": 1185.0,
+      "bbox_width": 102.0,
+      "bbox_height": 26.0,
+      "elongation": 3.923076923076923,
+      "bbox_fill": 0.4468325791855204
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "fda2645c-5d9e-47c3-b3ca-03129cea78a4",
+      "area": 1224.0,
+      "bbox_width": 81.0,
+      "bbox_height": 60.0,
+      "elongation": 1.35,
+      "bbox_fill": 0.2518518518518518
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "ee94b8f2-03a5-4e69-86f0-f9f0d0ccfa20",
+      "area": 775.0,
+      "bbox_width": 55.0,
+      "bbox_height": 22.0,
+      "elongation": 2.5,
+      "bbox_fill": 0.640495867768595
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "ac2f4edd-f34e-414f-a749-ad02b9c1f45b",
+      "area": 549.0,
+      "bbox_width": 33.0,
+      "bbox_height": 20.0,
+      "elongation": 1.65,
+      "bbox_fill": 0.8318181818181818
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "a2a1921f-18bd-4397-8324-c9de5616665b",
+      "area": 452.0,
+      "bbox_width": 20.0,
+      "bbox_height": 33.0,
+      "elongation": 1.65,
+      "bbox_fill": 0.6848484848484848
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "a936cae7-0104-43aa-918c-a69e42601cb2",
+      "area": 523.0,
+      "bbox_width": 55.0,
+      "bbox_height": 26.0,
+      "elongation": 2.1153846153846154,
+      "bbox_fill": 0.3657342657342657
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "455d8909-b6b6-4142-a485-606af3f09542",
+      "area": 9421.0,
+      "bbox_width": 544.0,
+      "bbox_height": 119.0,
+      "elongation": 4.571428571428571,
+      "bbox_fill": 0.14552953534354918
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "087e996a-f912-44a1-9bae-c3d664c2a25c",
+      "area": 468.0,
+      "bbox_width": 47.0,
+      "bbox_height": 23.0,
+      "elongation": 2.0434782608695654,
+      "bbox_fill": 0.43293246993524515
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "0c3451a2-13ca-46ec-8890-f6f9c39ff814",
+      "area": 4646.0,
+      "bbox_width": 229.0,
+      "bbox_height": 66.0,
+      "elongation": 3.4696969696969697,
+      "bbox_fill": 0.3073971152573773
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "e8076697-63a8-4ee9-b25c-2703e5427b93",
+      "area": 1053.0,
+      "bbox_width": 49.0,
+      "bbox_height": 28.0,
+      "elongation": 1.75,
+      "bbox_fill": 0.7674927113702624
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "a624a975-ca80-430f-9bab-d440daeeb18d",
+      "area": 3704.0,
+      "bbox_width": 204.0,
+      "bbox_height": 71.0,
+      "elongation": 2.8732394366197185,
+      "bbox_fill": 0.2557304611985639
+    },
+    {
+      "filename": "20121208171514Mh.jpeg",
+      "annotation_id": "1c98f2e0-0bd4-47e2-9bf5-e2bd38738f62",
+      "area": 798.0,
+      "bbox_width": 61.0,
+      "bbox_height": 40.0,
+      "elongation": 1.525,
+      "bbox_fill": 0.32704918032786884
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotation_id": "a15c2a98-50f6-444c-882a-795753d0d9ed",
+      "area": 2041.0,
+      "bbox_width": 83.0,
+      "bbox_height": 220.0,
+      "elongation": 2.6506024096385543,
+      "bbox_fill": 0.11177437020810514
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotation_id": "bfd04db2-2ce7-442f-8570-208154801668",
+      "area": 484.0,
+      "bbox_width": 51.0,
+      "bbox_height": 28.0,
+      "elongation": 1.8214285714285714,
+      "bbox_fill": 0.3389355742296919
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotation_id": "252270eb-baa6-42ef-9e9b-ba9d35e8dc99",
+      "area": 1369.0,
+      "bbox_width": 127.0,
+      "bbox_height": 41.0,
+      "elongation": 3.097560975609756,
+      "bbox_fill": 0.26291530631841753
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotation_id": "13403ec4-0d54-48b6-a831-e77c2a46b253",
+      "area": 995.0,
+      "bbox_width": 78.0,
+      "bbox_height": 96.0,
+      "elongation": 1.2307692307692308,
+      "bbox_fill": 0.1328792735042735
+    },
+    {
+      "filename": "20130324015554Uh.jpeg",
+      "annotation_id": "8d8cb3a1-6029-452f-8eb3-65347c665d3c",
+      "area": 685.0,
+      "bbox_width": 32.0,
+      "bbox_height": 69.0,
+      "elongation": 2.15625,
+      "bbox_fill": 0.31023550724637683
+    },
+    {
+      "filename": "20171123222130Lh.jpeg",
+      "annotation_id": "4b7a02df-c951-440e-8d35-cd511594777a",
+      "area": 11483.0,
+      "bbox_width": 462.0,
+      "bbox_height": 348.0,
+      "elongation": 1.3275862068965518,
+      "bbox_fill": 0.07142235159476538
+    },
+    {
+      "filename": "20171123222130Lh.jpeg",
+      "annotation_id": "83b1c5ce-f1d5-423d-812a-4e52db650a90",
+      "area": 930.0,
+      "bbox_width": 74.0,
+      "bbox_height": 85.0,
+      "elongation": 1.1486486486486487,
+      "bbox_fill": 0.1478537360890302
+    },
+    {
+      "filename": "20171123222130Lh.jpeg",
+      "annotation_id": "b588f7cb-dc4c-400e-adc8-bd21dbcc8c09",
+      "area": 2421.0,
+      "bbox_width": 39.0,
+      "bbox_height": 97.0,
+      "elongation": 2.4871794871794872,
+      "bbox_fill": 0.6399682791435368
+    },
+    {
+      "filename": "20171123222130Lh.jpeg",
+      "annotation_id": "12524b6d-e9b5-412c-9c78-0d19fe1723cc",
+      "area": 21880.0,
+      "bbox_width": 604.0,
+      "bbox_height": 398.0,
+      "elongation": 1.5175879396984924,
+      "bbox_fill": 0.09101800392691936
+    },
+    {
+      "filename": "20210329015250Uh.jpeg",
+      "annotation_id": "ce6324ee-e1fb-40f9-9327-cbcb55143bff",
+      "area": 501.0,
+      "bbox_width": 56.0,
+      "bbox_height": 25.0,
+      "elongation": 2.24,
+      "bbox_fill": 0.3578571428571429
+    },
+    {
+      "filename": "20210329015250Uh.jpeg",
+      "annotation_id": "ec14a654-a711-424f-b82e-38fc1ecb82ed",
+      "area": 413.0,
+      "bbox_width": 40.0,
+      "bbox_height": 38.0,
+      "elongation": 1.0526315789473684,
+      "bbox_fill": 0.27171052631578946
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "8c2ab4a5-1667-4426-816d-1175f6df47ca",
+      "area": 2174.0,
+      "bbox_width": 133.0,
+      "bbox_height": 180.0,
+      "elongation": 1.3533834586466165,
+      "bbox_fill": 0.09081035923141187
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "f7f1c829-f1f2-4f57-ab77-470c72d8f02a",
+      "area": 1104.0,
+      "bbox_width": 56.0,
+      "bbox_height": 72.0,
+      "elongation": 1.2857142857142858,
+      "bbox_fill": 0.27380952380952384
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "9eb8630f-6ff4-4ecf-a64b-d56c72c54c34",
+      "area": 1880.0,
+      "bbox_width": 173.0,
+      "bbox_height": 59.0,
+      "elongation": 2.9322033898305087,
+      "bbox_fill": 0.18418732242578623
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "2e8dbaae-d124-414a-af68-d52ecd6c1993",
+      "area": 1323.0,
+      "bbox_width": 73.0,
+      "bbox_height": 85.0,
+      "elongation": 1.1643835616438356,
+      "bbox_fill": 0.21321514907332795
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "67789855-5146-4fa1-bf6a-3cfe322f1033",
+      "area": 382.0,
+      "bbox_width": 31.0,
+      "bbox_height": 65.0,
+      "elongation": 2.096774193548387,
+      "bbox_fill": 0.18957816377171216
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "1614def5-ce1c-46ad-a421-b0755b49ecbe",
+      "area": 748.0,
+      "bbox_width": 23.0,
+      "bbox_height": 118.0,
+      "elongation": 5.130434782608695,
+      "bbox_fill": 0.27560795873249816
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "53aa895f-c507-4b3e-828a-34d20f7b5784",
+      "area": 376.0,
+      "bbox_width": 68.0,
+      "bbox_height": 23.0,
+      "elongation": 2.9565217391304346,
+      "bbox_fill": 0.24040920716112532
+    },
+    {
+      "filename": "20110509121334Ch.jpeg",
+      "annotation_id": "9b41d9ad-370f-415f-92dd-83eeb2e06f8a",
+      "area": 2118.0,
+      "bbox_width": 105.0,
+      "bbox_height": 70.0,
+      "elongation": 1.5,
+      "bbox_fill": 0.28816326530612246
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "cdf6a26b-e64f-4cf3-b946-1fe1dfcbf4ed",
+      "area": 2815.0,
+      "bbox_width": 145.0,
+      "bbox_height": 153.0,
+      "elongation": 1.0551724137931036,
+      "bbox_fill": 0.12688753662384494
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "a5ec7bd5-23fe-4104-9671-a526db0e981d",
+      "area": 747.0,
+      "bbox_width": 18.0,
+      "bbox_height": 67.0,
+      "elongation": 3.7222222222222223,
+      "bbox_fill": 0.6194029850746269
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "0dc0baae-1209-4b8c-8f70-fe7ff315cc47",
+      "area": 1777.0,
+      "bbox_width": 122.0,
+      "bbox_height": 120.0,
+      "elongation": 1.0166666666666666,
+      "bbox_fill": 0.12137978142076503
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "3677c445-3997-4931-a674-6a7584e5159b",
+      "area": 1494.0,
+      "bbox_width": 108.0,
+      "bbox_height": 48.0,
+      "elongation": 2.25,
+      "bbox_fill": 0.2881944444444444
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "9b060eb6-2a0a-428c-8399-048f153ed587",
+      "area": 1364.0,
+      "bbox_width": 78.0,
+      "bbox_height": 122.0,
+      "elongation": 1.564102564102564,
+      "bbox_fill": 0.14333753678015973
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "48c6b4dc-cadf-49a5-9b71-2ad23732480e",
+      "area": 978.0,
+      "bbox_width": 59.0,
+      "bbox_height": 80.0,
+      "elongation": 1.3559322033898304,
+      "bbox_fill": 0.20720338983050848
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "a98fd652-daa6-4181-849c-0262215d5f81",
+      "area": 5166.0,
+      "bbox_width": 335.0,
+      "bbox_height": 137.0,
+      "elongation": 2.4452554744525545,
+      "bbox_fill": 0.1125612811853143
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "fb5cd0e8-c028-4862-a4fe-17e903716cff",
+      "area": 3597.0,
+      "bbox_width": 99.0,
+      "bbox_height": 95.0,
+      "elongation": 1.0421052631578946,
+      "bbox_fill": 0.3824561403508772
+    },
+    {
+      "filename": "20131108045254Uh.jpeg",
+      "annotation_id": "22439962-fb2b-4213-9ae7-05ecf4ff4e47",
+      "area": 540.0,
+      "bbox_width": 80.0,
+      "bbox_height": 48.0,
+      "elongation": 1.6666666666666667,
+      "bbox_fill": 0.140625
+    },
+    {
+      "filename": "20170323041730Lh.jpeg",
+      "annotation_id": "d083288a-8627-4ffb-a2d5-f1cf050149d7",
+      "area": 4908.0,
+      "bbox_width": 258.0,
+      "bbox_height": 153.0,
+      "elongation": 1.6862745098039216,
+      "bbox_fill": 0.12433500531995743
+    },
+    {
+      "filename": "20170323041730Lh.jpeg",
+      "annotation_id": "ef4b1e05-1bca-418f-8d7c-401908bc442e",
+      "area": 4933.0,
+      "bbox_width": 305.0,
+      "bbox_height": 61.0,
+      "elongation": 5.0,
+      "bbox_fill": 0.2651437785541521
+    },
+    {
+      "filename": "20170323041730Lh.jpeg",
+      "annotation_id": "db32d8de-cb10-4a29-86a3-ea1eb0cad05e",
+      "area": 744.0,
+      "bbox_width": 52.0,
+      "bbox_height": 131.0,
+      "elongation": 2.519230769230769,
+      "bbox_fill": 0.1092190252495596
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "16f49739-b149-44c8-b7c9-3e4105d11322",
+      "area": 4380.0,
+      "bbox_width": 133.0,
+      "bbox_height": 117.0,
+      "elongation": 1.1367521367521367,
+      "bbox_fill": 0.2814729130518604
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "817a5332-4fb4-4529-b6d1-6d07606aefec",
+      "area": 628.0,
+      "bbox_width": 64.0,
+      "bbox_height": 45.0,
+      "elongation": 1.4222222222222223,
+      "bbox_fill": 0.21805555555555556
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "31a0e514-9d90-4ffc-bb89-7ce15ca14b3c",
+      "area": 3181.0,
+      "bbox_width": 125.0,
+      "bbox_height": 103.0,
+      "elongation": 1.2135922330097086,
+      "bbox_fill": 0.24706796116504853
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "1ac9e0cd-b088-4552-84e8-cef20e0d0a2f",
+      "area": 1188.0,
+      "bbox_width": 67.0,
+      "bbox_height": 30.0,
+      "elongation": 2.2333333333333334,
+      "bbox_fill": 0.591044776119403
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "1fc7c735-0f89-4b50-aebe-005d4aa0d02e",
+      "area": 2307.0,
+      "bbox_width": 107.0,
+      "bbox_height": 83.0,
+      "elongation": 1.2891566265060241,
+      "bbox_fill": 0.25976804413917354
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "9515709f-9e6b-47bf-80d0-483ea9e14280",
+      "area": 1044.0,
+      "bbox_width": 53.0,
+      "bbox_height": 25.0,
+      "elongation": 2.12,
+      "bbox_fill": 0.7879245283018868
+    },
+    {
+      "filename": "20151118172314Mh.jpeg",
+      "annotation_id": "87a30538-79a3-488e-9951-451cf9923676",
+      "area": 1131.0,
+      "bbox_width": 67.0,
+      "bbox_height": 89.0,
+      "elongation": 1.328358208955224,
+      "bbox_fill": 0.18966962938118398
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "10651b2d-100c-4ded-9956-1b4dda8be15f",
+      "area": 3653.0,
+      "bbox_width": 135.0,
+      "bbox_height": 168.0,
+      "elongation": 1.2444444444444445,
+      "bbox_fill": 0.16106701940035273
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "7c3624f4-3726-4d23-a7b4-4e04ffdb19c4",
+      "area": 775.0,
+      "bbox_width": 86.0,
+      "bbox_height": 92.0,
+      "elongation": 1.069767441860465,
+      "bbox_fill": 0.09795247724974722
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "7de9d8f1-eb32-456a-8e9f-5487199c445e",
+      "area": 851.0,
+      "bbox_width": 55.0,
+      "bbox_height": 34.0,
+      "elongation": 1.6176470588235294,
+      "bbox_fill": 0.4550802139037433
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "9a92d6dc-55c2-4637-a234-e3b4e2440d51",
+      "area": 5670.0,
+      "bbox_width": 182.0,
+      "bbox_height": 70.0,
+      "elongation": 2.6,
+      "bbox_fill": 0.44505494505494503
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "d21d3f5c-be48-48e7-8d4d-38eac2d4ec1e",
+      "area": 1042.0,
+      "bbox_width": 33.0,
+      "bbox_height": 39.0,
+      "elongation": 1.1818181818181819,
+      "bbox_fill": 0.8096348096348096
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "bed4267d-5aa9-46fd-aace-0aa7fd748029",
+      "area": 1641.0,
+      "bbox_width": 47.0,
+      "bbox_height": 123.0,
+      "elongation": 2.617021276595745,
+      "bbox_fill": 0.28386092371562016
+    },
+    {
+      "filename": "20160617133654Bh.jpeg",
+      "annotation_id": "0b558bfb-be80-4b5b-be0e-6d65235b9d71",
+      "area": 992.0,
+      "bbox_width": 89.0,
+      "bbox_height": 47.0,
+      "elongation": 1.8936170212765957,
+      "bbox_fill": 0.23715037054745397
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "e98ed775-d10c-400d-85f4-506c3eb8ba63",
+      "area": 2333.0,
+      "bbox_width": 97.0,
+      "bbox_height": 179.0,
+      "elongation": 1.8453608247422681,
+      "bbox_fill": 0.1343661809595116
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "eb71b37a-1209-4c56-8e27-ca958a3b2b8e",
+      "area": 3320.0,
+      "bbox_width": 159.0,
+      "bbox_height": 342.0,
+      "elongation": 2.150943396226415,
+      "bbox_fill": 0.061054102762146456
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "0ecdc8e9-86d9-4dd4-8903-77e11b5ce2b5",
+      "area": 1845.0,
+      "bbox_width": 126.0,
+      "bbox_height": 128.0,
+      "elongation": 1.0158730158730158,
+      "bbox_fill": 0.11439732142857142
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "fab7b062-250e-4e9a-8c9e-2d74a46863e8",
+      "area": 1528.0,
+      "bbox_width": 78.0,
+      "bbox_height": 49.0,
+      "elongation": 1.5918367346938775,
+      "bbox_fill": 0.3997906855049712
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "de2b8686-d913-4c9d-8fb8-1ec6461e4453",
+      "area": 1339.0,
+      "bbox_width": 137.0,
+      "bbox_height": 63.0,
+      "elongation": 2.1746031746031744,
+      "bbox_fill": 0.1551384544085274
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "87305a88-96eb-421f-8096-e81526b8dff2",
+      "area": 8428.0,
+      "bbox_width": 120.0,
+      "bbox_height": 271.0,
+      "elongation": 2.2583333333333333,
+      "bbox_fill": 0.25916359163591635
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "0c3747e5-f35e-43e7-8b80-0b1cf03851d1",
+      "area": 1082.0,
+      "bbox_width": 15.0,
+      "bbox_height": 125.0,
+      "elongation": 8.333333333333334,
+      "bbox_fill": 0.5770666666666666
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "4abd31dd-9797-4abe-acf3-d786c40889cd",
+      "area": 556.0,
+      "bbox_width": 61.0,
+      "bbox_height": 32.0,
+      "elongation": 1.90625,
+      "bbox_fill": 0.2848360655737705
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "711228c2-c891-4a14-80c4-707147c26d63",
+      "area": 453.0,
+      "bbox_width": 19.0,
+      "bbox_height": 39.0,
+      "elongation": 2.0526315789473686,
+      "bbox_fill": 0.611336032388664
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "7847cb10-6112-4a0c-8598-9989d716470e",
+      "area": 609.0,
+      "bbox_width": 41.0,
+      "bbox_height": 34.0,
+      "elongation": 1.2058823529411764,
+      "bbox_fill": 0.4368723098995696
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "13b4a2e0-930b-4b56-978b-7574702f1f7a",
+      "area": 446.0,
+      "bbox_width": 62.0,
+      "bbox_height": 30.0,
+      "elongation": 2.066666666666667,
+      "bbox_fill": 0.23978494623655913
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "7fec1bf8-0bfd-4bbd-979e-3e0202e83a88",
+      "area": 1704.0,
+      "bbox_width": 124.0,
+      "bbox_height": 78.0,
+      "elongation": 1.5897435897435896,
+      "bbox_fill": 0.1761786600496278
+    },
+    {
+      "filename": "20160201025254Uh.jpeg",
+      "annotation_id": "6e3be095-1bf5-48fe-bd58-570b709bc097",
+      "area": 2521.0,
+      "bbox_width": 53.0,
+      "bbox_height": 92.0,
+      "elongation": 1.7358490566037736,
+      "bbox_fill": 0.5170221493027072
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "18d88b2f-58d8-4134-ab96-99c7f17d075b",
+      "area": 996.0,
+      "bbox_width": 83.0,
+      "bbox_height": 93.0,
+      "elongation": 1.1204819277108433,
+      "bbox_fill": 0.12903225806451613
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "0079fb70-0d5d-48f4-8786-7087dd295894",
+      "area": 1414.0,
+      "bbox_width": 33.0,
+      "bbox_height": 116.0,
+      "elongation": 3.515151515151515,
+      "bbox_fill": 0.36938349007314525
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "c26ad342-6343-455f-bb4b-e7ccb56c9dc9",
+      "area": 1200.0,
+      "bbox_width": 68.0,
+      "bbox_height": 103.0,
+      "elongation": 1.5147058823529411,
+      "bbox_fill": 0.17133066818960593
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "a06eebb0-f9d8-4fd3-b3bc-483bfa3e13fa",
+      "area": 781.0,
+      "bbox_width": 66.0,
+      "bbox_height": 29.0,
+      "elongation": 2.2758620689655173,
+      "bbox_fill": 0.40804597701149425
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "eb6b7890-9834-42c6-bf21-c4eb71a07075",
+      "area": 1390.0,
+      "bbox_width": 69.0,
+      "bbox_height": 46.0,
+      "elongation": 1.5,
+      "bbox_fill": 0.4379332073093888
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "1ba0e189-1538-4d6a-9c30-d44dd0375296",
+      "area": 769.0,
+      "bbox_width": 56.0,
+      "bbox_height": 45.0,
+      "elongation": 1.2444444444444445,
+      "bbox_fill": 0.3051587301587302
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "79864a7b-d51f-4fac-909f-3376ae774dbb",
+      "area": 1805.0,
+      "bbox_width": 95.0,
+      "bbox_height": 49.0,
+      "elongation": 1.9387755102040816,
+      "bbox_fill": 0.3877551020408163
+    },
+    {
+      "filename": "20110510063134Lh.jpeg",
+      "annotation_id": "5668c17e-6225-46fc-b304-8aa5594a94de",
+      "area": 769.0,
+      "bbox_width": 31.0,
+      "bbox_height": 92.0,
+      "elongation": 2.967741935483871,
+      "bbox_fill": 0.2696353436185133
+    },
+    {
+      "filename": "20180805232510Mh.jpeg",
+      "annotation_id": "9e7f8c5f-24dc-494d-966a-8fc74cfe6148",
+      "area": 2517.0,
+      "bbox_width": 110.0,
+      "bbox_height": 57.0,
+      "elongation": 1.9298245614035088,
+      "bbox_fill": 0.4014354066985646
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "8e032e10-a9c3-41d5-b03b-af9485a6b3af",
+      "area": 2335.0,
+      "bbox_width": 220.0,
+      "bbox_height": 134.0,
+      "elongation": 1.6417910447761195,
+      "bbox_fill": 0.07920624151967436
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "59079ac0-641b-4f6c-81c3-223a8b54be7d",
+      "area": 11119.0,
+      "bbox_width": 634.0,
+      "bbox_height": 336.0,
+      "elongation": 1.8869047619047619,
+      "bbox_fill": 0.05219599669520805
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "0ce60482-e8de-4bf8-8ac2-fdcdedcfd27f",
+      "area": 315.0,
+      "bbox_width": 46.0,
+      "bbox_height": 63.0,
+      "elongation": 1.3695652173913044,
+      "bbox_fill": 0.10869565217391304
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "86ff7ec9-8568-4faa-98a8-e36ff8cea074",
+      "area": 349.0,
+      "bbox_width": 44.0,
+      "bbox_height": 31.0,
+      "elongation": 1.4193548387096775,
+      "bbox_fill": 0.2558651026392962
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "9a16806e-408b-48db-977e-07d6e00e9a6d",
+      "area": 354.0,
+      "bbox_width": 40.0,
+      "bbox_height": 22.0,
+      "elongation": 1.8181818181818181,
+      "bbox_fill": 0.4022727272727273
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "6a0d828d-fe09-4005-8172-a010967d8254",
+      "area": 932.0,
+      "bbox_width": 34.0,
+      "bbox_height": 77.0,
+      "elongation": 2.264705882352941,
+      "bbox_fill": 0.3559969442322384
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "19b174f7-0073-4b7e-926d-6bb96e17ac49",
+      "area": 2988.0,
+      "bbox_width": 109.0,
+      "bbox_height": 150.0,
+      "elongation": 1.3761467889908257,
+      "bbox_fill": 0.18275229357798164
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "b82c5a41-8aff-4f7b-a99d-5a2dfc58dedd",
+      "area": 1276.0,
+      "bbox_width": 67.0,
+      "bbox_height": 47.0,
+      "elongation": 1.425531914893617,
+      "bbox_fill": 0.40520800254048905
+    },
+    {
+      "filename": "20140218230234Lh.jpeg",
+      "annotation_id": "de6473a3-81f3-4cf8-9715-c1abe150d16b",
+      "area": 4978.0,
+      "bbox_width": 378.0,
+      "bbox_height": 241.0,
+      "elongation": 1.5684647302904564,
+      "bbox_fill": 0.05464444883532021
+    },
+    {
+      "filename": "20180318020350Uh.jpeg",
+      "annotation_id": "6d4d150f-d0cb-403b-ba32-5c098cf4aec4",
+      "area": 1230.0,
+      "bbox_width": 75.0,
+      "bbox_height": 60.0,
+      "elongation": 1.25,
+      "bbox_fill": 0.2733333333333333
+    },
+    {
+      "filename": "20180318020350Uh.jpeg",
+      "annotation_id": "f1f9ff28-2985-48ac-9865-d7ef10dc9932",
+      "area": 508.0,
+      "bbox_width": 28.0,
+      "bbox_height": 43.0,
+      "elongation": 1.5357142857142858,
+      "bbox_fill": 0.4219269102990033
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "1d731513-60fe-4a3b-aaa1-d031d0eac76e",
+      "area": 4467.0,
+      "bbox_width": 172.0,
+      "bbox_height": 270.0,
+      "elongation": 1.569767441860465,
+      "bbox_fill": 0.09618863049095608
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "908b7ec0-c119-4087-99f4-03cc02cbd26a",
+      "area": 935.0,
+      "bbox_width": 45.0,
+      "bbox_height": 109.0,
+      "elongation": 2.422222222222222,
+      "bbox_fill": 0.1906218144750255
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "8160072e-71c9-4561-8418-80b8b25eb50e",
+      "area": 1084.0,
+      "bbox_width": 69.0,
+      "bbox_height": 35.0,
+      "elongation": 1.9714285714285715,
+      "bbox_fill": 0.44886128364389233
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "40e50f94-86a0-4e4e-a0dd-717ced8c6626",
+      "area": 885.0,
+      "bbox_width": 25.0,
+      "bbox_height": 80.0,
+      "elongation": 3.2,
+      "bbox_fill": 0.4425
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "ab5cf96e-ee98-48c8-bfc7-b6108d71d8ef",
+      "area": 840.0,
+      "bbox_width": 62.0,
+      "bbox_height": 21.0,
+      "elongation": 2.9523809523809526,
+      "bbox_fill": 0.6451612903225806
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "5264d318-9cf9-4f0f-bdd4-1c221f6e1acd",
+      "area": 635.0,
+      "bbox_width": 25.0,
+      "bbox_height": 43.0,
+      "elongation": 1.72,
+      "bbox_fill": 0.5906976744186047
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "6e4876c4-3fb1-442e-87e5-0fb1f486fae0",
+      "area": 262.0,
+      "bbox_width": 20.0,
+      "bbox_height": 33.0,
+      "elongation": 1.65,
+      "bbox_fill": 0.396969696969697
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "91c13215-7176-4ee9-8ba6-c106dcf3aa08",
+      "area": 609.0,
+      "bbox_width": 36.0,
+      "bbox_height": 40.0,
+      "elongation": 1.1111111111111112,
+      "bbox_fill": 0.42291666666666666
+    },
+    {
+      "filename": "20110312082634Lh.jpeg",
+      "annotation_id": "bf235b1d-2274-4e97-bbf8-93a0f7c3908c",
+      "area": 597.0,
+      "bbox_width": 43.0,
+      "bbox_height": 72.0,
+      "elongation": 1.6744186046511629,
+      "bbox_fill": 0.1928294573643411
+    },
+    {
+      "filename": "20170103030554Uh.jpeg",
+      "annotation_id": "f3cc463f-7bed-443b-9b81-69d467f81d96",
+      "area": 589.0,
+      "bbox_width": 41.0,
+      "bbox_height": 60.0,
+      "elongation": 1.4634146341463414,
+      "bbox_fill": 0.2394308943089431
+    },
+    {
+      "filename": "20170103030554Uh.jpeg",
+      "annotation_id": "b49fa86e-59c1-49d9-8c3e-f0dcbe1503b8",
+      "area": 693.0,
+      "bbox_width": 64.0,
+      "bbox_height": 50.0,
+      "elongation": 1.28,
+      "bbox_fill": 0.2165625
+    },
+    {
+      "filename": "20170103030554Uh.jpeg",
+      "annotation_id": "60df235d-5267-473a-8707-b00a6e1e9729",
+      "area": 1223.0,
+      "bbox_width": 78.0,
+      "bbox_height": 48.0,
+      "elongation": 1.625,
+      "bbox_fill": 0.3266559829059829
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "aa8d996d-aa94-46df-94bd-6d2989752109",
+      "area": 6374.0,
+      "bbox_width": 340.0,
+      "bbox_height": 137.0,
+      "elongation": 2.4817518248175183,
+      "bbox_fill": 0.136839845427222
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "b67883b0-9567-4f98-b94e-6878273948b2",
+      "area": 1668.0,
+      "bbox_width": 47.0,
+      "bbox_height": 172.0,
+      "elongation": 3.6595744680851063,
+      "bbox_fill": 0.20633349826818406
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "0b88b91d-dc24-4935-845f-e1e8e4b614a1",
+      "area": 1964.0,
+      "bbox_width": 155.0,
+      "bbox_height": 59.0,
+      "elongation": 2.6271186440677967,
+      "bbox_fill": 0.21476216511755059
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "0cfce72f-0531-444a-9636-32a455047a38",
+      "area": 1483.0,
+      "bbox_width": 44.0,
+      "bbox_height": 112.0,
+      "elongation": 2.5454545454545454,
+      "bbox_fill": 0.30093344155844154
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "c974d175-9c88-463b-b87d-99ad6275370f",
+      "area": 600.0,
+      "bbox_width": 50.0,
+      "bbox_height": 54.0,
+      "elongation": 1.08,
+      "bbox_fill": 0.2222222222222222
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "d2917576-ee43-46d7-83e3-dfe906b8509f",
+      "area": 517.0,
+      "bbox_width": 47.0,
+      "bbox_height": 29.0,
+      "elongation": 1.6206896551724137,
+      "bbox_fill": 0.3793103448275862
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "20d85e5e-410a-451e-a1cf-83a0c751814e",
+      "area": 1882.0,
+      "bbox_width": 186.0,
+      "bbox_height": 165.0,
+      "elongation": 1.1272727272727272,
+      "bbox_fill": 0.061322906484196804
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "1830b311-969e-4c49-878f-d04c2469ba1c",
+      "area": 636.0,
+      "bbox_width": 74.0,
+      "bbox_height": 43.0,
+      "elongation": 1.7209302325581395,
+      "bbox_fill": 0.1998742928975487
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "a973c70a-34d1-4401-976d-119d55201708",
+      "area": 206.0,
+      "bbox_width": 36.0,
+      "bbox_height": 25.0,
+      "elongation": 1.44,
+      "bbox_fill": 0.2288888888888889
+    },
+    {
+      "filename": "20120206063134Lh.jpeg",
+      "annotation_id": "4649b9fd-f74f-4e58-bfb1-9f862ff6da88",
+      "area": 3493.0,
+      "bbox_width": 266.0,
+      "bbox_height": 255.0,
+      "elongation": 1.0431372549019609,
+      "bbox_fill": 0.05149638802889577
+    },
+    {
+      "filename": "20150125172714Mh.jpeg",
+      "annotation_id": "e48b8273-0446-43e9-b659-9aa8894e57ff",
+      "area": 3674.0,
+      "bbox_width": 205.0,
+      "bbox_height": 95.0,
+      "elongation": 2.1578947368421053,
+      "bbox_fill": 0.18865211810012836
+    },
+    {
+      "filename": "20150125172714Mh.jpeg",
+      "annotation_id": "0597d592-05cc-4078-b258-b6ef6ae8368f",
+      "area": 491.0,
+      "bbox_width": 13.0,
+      "bbox_height": 81.0,
+      "elongation": 6.230769230769231,
+      "bbox_fill": 0.466286799620133
+    },
+    {
+      "filename": "20150125172714Mh.jpeg",
+      "annotation_id": "5bc0a7e2-e236-4bf0-a742-f55254b28bca",
+      "area": 1218.0,
+      "bbox_width": 45.0,
+      "bbox_height": 134.0,
+      "elongation": 2.977777777777778,
+      "bbox_fill": 0.2019900497512438
+    },
+    {
+      "filename": "20170122034654Uh.jpeg",
+      "annotation_id": "1c5b4ccf-a4a8-4379-af8b-ffbde2314784",
+      "area": 1612.0,
+      "bbox_width": 40.0,
+      "bbox_height": 75.0,
+      "elongation": 1.875,
+      "bbox_fill": 0.5373333333333333
+    },
+    {
+      "filename": "20170122034654Uh.jpeg",
+      "annotation_id": "684232ae-22b1-4f86-a6c8-d1293323693a",
+      "area": 1058.0,
+      "bbox_width": 73.0,
+      "bbox_height": 91.0,
+      "elongation": 1.2465753424657535,
+      "bbox_fill": 0.15926539214210447
+    },
+    {
+      "filename": "20170122034654Uh.jpeg",
+      "annotation_id": "ddd80b7b-f7c1-4c14-b7bc-334aa7bee786",
+      "area": 1970.0,
+      "bbox_width": 50.0,
+      "bbox_height": 78.0,
+      "elongation": 1.56,
+      "bbox_fill": 0.5051282051282051
+    },
+    {
+      "filename": "20170122034654Uh.jpeg",
+      "annotation_id": "8b0b9d28-5094-4ea2-a006-420f0c268456",
+      "area": 1171.0,
+      "bbox_width": 54.0,
+      "bbox_height": 54.0,
+      "elongation": 1.0,
+      "bbox_fill": 0.4015775034293553
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "f37dfe30-c234-4e9e-b39c-ec74d452ef84",
+      "area": 3381.0,
+      "bbox_width": 217.0,
+      "bbox_height": 162.0,
+      "elongation": 1.3395061728395061,
+      "bbox_fill": 0.0961768219832736
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "ea90fc41-85c9-4bd5-b24a-eb745e50b9de",
+      "area": 15495.0,
+      "bbox_width": 613.0,
+      "bbox_height": 309.0,
+      "elongation": 1.9838187702265373,
+      "bbox_fill": 0.08180363958884367
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "2309b8f3-ea38-4a0e-931c-a657433c391a",
+      "area": 10958.0,
+      "bbox_width": 174.0,
+      "bbox_height": 288.0,
+      "elongation": 1.6551724137931034,
+      "bbox_fill": 0.21867017879948913
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "4fb5d738-fd2c-47a1-a219-baf795391203",
+      "area": 11603.0,
+      "bbox_width": 314.0,
+      "bbox_height": 300.0,
+      "elongation": 1.0466666666666666,
+      "bbox_fill": 0.12317409766454353
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "7bcd5d16-c100-4c8e-ba79-96e8d38c8c01",
+      "area": 1331.0,
+      "bbox_width": 83.0,
+      "bbox_height": 64.0,
+      "elongation": 1.296875,
+      "bbox_fill": 0.25056475903614456
+    },
+    {
+      "filename": "20120427063154Uh.jpeg",
+      "annotation_id": "426f43f5-61e5-45a9-8ec6-74a053c2f3cf",
+      "area": 991.0,
+      "bbox_width": 92.0,
+      "bbox_height": 38.0,
+      "elongation": 2.4210526315789473,
+      "bbox_fill": 0.283466819221968
+    },
+    {
+      "filename": "20210331231510Mh.jpeg",
+      "annotation_id": "d46d13ad-4a2b-4c3a-a556-0061f71b0dfa",
+      "area": 3429.0,
+      "bbox_width": 203.0,
+      "bbox_height": 104.0,
+      "elongation": 1.9519230769230769,
+      "bbox_fill": 0.1624194770746495
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "51b4d8db-8cb3-468e-a375-088c0d0a989e",
+      "area": 2933.0,
+      "bbox_width": 295.0,
+      "bbox_height": 58.0,
+      "elongation": 5.086206896551724,
+      "bbox_fill": 0.17142022209234367
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "fc6639d5-e8f5-4782-990f-6a7eabe0a7d9",
+      "area": 3861.0,
+      "bbox_width": 214.0,
+      "bbox_height": 281.0,
+      "elongation": 1.3130841121495327,
+      "bbox_fill": 0.06420660524827884
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "d946302d-2797-4d61-b345-98d97dda528a",
+      "area": 1804.0,
+      "bbox_width": 59.0,
+      "bbox_height": 140.0,
+      "elongation": 2.3728813559322033,
+      "bbox_fill": 0.21840193704600483
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "8b426af0-340c-4ee2-a184-6b8dca107bc9",
+      "area": 1615.0,
+      "bbox_width": 162.0,
+      "bbox_height": 86.0,
+      "elongation": 1.8837209302325582,
+      "bbox_fill": 0.11592018374964111
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "c2d2065e-c562-498f-9baa-3b924e7bc419",
+      "area": 934.0,
+      "bbox_width": 102.0,
+      "bbox_height": 23.0,
+      "elongation": 4.434782608695652,
+      "bbox_fill": 0.3981244671781756
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "059f926c-21ff-4b4d-be01-952c9f88d5bf",
+      "area": 568.0,
+      "bbox_width": 45.0,
+      "bbox_height": 27.0,
+      "elongation": 1.6666666666666667,
+      "bbox_fill": 0.4674897119341564
+    },
+    {
+      "filename": "20160619133714Th.jpeg",
+      "annotation_id": "de63ebe6-e75e-4258-9c07-caa726803681",
+      "area": 471.0,
+      "bbox_width": 42.0,
+      "bbox_height": 15.0,
+      "elongation": 2.8,
+      "bbox_fill": 0.7476190476190476
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "20acf239-07bd-4284-b27c-b74d863b9064",
+      "area": 4869.0,
+      "bbox_width": 315.0,
+      "bbox_height": 309.0,
+      "elongation": 1.0194174757281553,
+      "bbox_fill": 0.05002311604253352
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "7d6d0499-b936-4b17-ba08-1c5e33cfb381",
+      "area": 187.0,
+      "bbox_width": 27.0,
+      "bbox_height": 27.0,
+      "elongation": 1.0,
+      "bbox_fill": 0.25651577503429357
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "4b15dbf7-1d8c-4678-af7d-2a9a81cc0a4a",
+      "area": 3409.0,
+      "bbox_width": 151.0,
+      "bbox_height": 141.0,
+      "elongation": 1.070921985815603,
+      "bbox_fill": 0.1601146024141656
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "c75d7435-35f3-40de-a35f-cb9bb5b848dc",
+      "area": 659.0,
+      "bbox_width": 41.0,
+      "bbox_height": 29.0,
+      "elongation": 1.4137931034482758,
+      "bbox_fill": 0.5542472666105971
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "aebd2cbb-28c5-4e83-aa61-920a64372ace",
+      "area": 614.0,
+      "bbox_width": 70.0,
+      "bbox_height": 32.0,
+      "elongation": 2.1875,
+      "bbox_fill": 0.2741071428571429
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "4047292e-d591-4171-aa1a-883e7b687c69",
+      "area": 415.0,
+      "bbox_width": 25.0,
+      "bbox_height": 41.0,
+      "elongation": 1.64,
+      "bbox_fill": 0.40487804878048783
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "fc6a1578-bca8-46e4-9b8e-520b5f9ef592",
+      "area": 376.0,
+      "bbox_width": 32.0,
+      "bbox_height": 48.0,
+      "elongation": 1.5,
+      "bbox_fill": 0.24479166666666666
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "4b3b973e-0f05-4f5c-b8ee-1ab282a0a873",
+      "area": 162.0,
+      "bbox_width": 23.0,
+      "bbox_height": 19.0,
+      "elongation": 1.2105263157894737,
+      "bbox_fill": 0.3707093821510298
+    },
+    {
+      "filename": "20110623063134Lh.jpeg",
+      "annotation_id": "e440bd7a-e5c3-44f4-9754-527fbc976485",
+      "area": 385.0,
+      "bbox_width": 30.0,
+      "bbox_height": 50.0,
+      "elongation": 1.6666666666666667,
+      "bbox_fill": 0.25666666666666665
+    }
+  ]
+}

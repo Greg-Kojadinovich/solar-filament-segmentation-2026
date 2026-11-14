@@ -1,0 +1,20 @@
+[
+  {
+    "size": 256,
+    "foreground_pixels": 351,
+    "foreground_fraction": 0.0053558349609375,
+    "original_foreground_fraction": 0.0054552555084228516
+  },
+  {
+    "size": 512,
+    "foreground_pixels": 1418,
+    "foreground_fraction": 0.00540924072265625,
+    "original_foreground_fraction": 0.0054552555084228516
+  },
+  {
+    "size": 1024,
+    "foreground_pixels": 5722,
+    "foreground_fraction": 0.0054569244384765625,
+    "original_foreground_fraction": 0.0054552555084228516
+  }
+]

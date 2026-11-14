@@ -1,0 +1,86 @@
+{
+  "test_image_count": 180,
+  "description": "Unweighted image means; both-empty pairs excluded. Prediction agreement, not accuracy.",
+  "pairs": [
+    {
+      "left": "V1",
+      "right": "V2",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.8262950448423019,
+      "jaccard": 0.7121261400430162
+    },
+    {
+      "left": "V1",
+      "right": "V3",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.7644287136817003,
+      "jaccard": 0.6279933214710532
+    },
+    {
+      "left": "V1",
+      "right": "V5",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.7551081601411355,
+      "jaccard": 0.6203612390622918
+    },
+    {
+      "left": "V2",
+      "right": "V3",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.7831237059128848,
+      "jaccard": 0.6534305926633838
+    },
+    {
+      "left": "V2",
+      "right": "V5",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.7568512173084331,
+      "jaccard": 0.6213988894033831
+    },
+    {
+      "left": "V3",
+      "right": "V5",
+      "images": 177,
+      "both_empty_excluded": 3,
+      "f1": 0.7795274595328903,
+      "jaccard": 0.6550331494618012
+    }
+  ],
+  "v1_labeled_holdout": {
+    "scores": {
+      "pq": 0.3350133736055205,
+      "dice": 0.6404839223345516,
+      "iou": 0.4884932203068477,
+      "tp": 3.817460317460317,
+      "fp": 3.5444444444444447,
+      "fn": 3.3142857142857145,
+      "split_relations": 0.48095238095238096,
+      "merge_relations": 0.0873015873015873
+    },
+    "seconds": 35.26882122100005,
+    "image_count": 105,
+    "annotation_set_count": 166
+  },
+  "source_sha256": {
+    "Kaggle Competition/cv_outputs/kaggle_baseline_v1/submission.csv": "08cd9d93909dc30722646a89147510373d4a06edd5b43647767ff0010068df49",
+    "Kaggle Competition/V2Output/results/submission.csv": "023f447ee1d749cfa71a42f7b33833e31891cd3947144ff3f8da4d7c91598dab",
+    "Kaggle Competition/cv_outputs/kaggle_v3/submission_disjoint.csv": "425b6fff45a20ca44fc99b179fa6d8a4bd6779fbd0b582e69a7afd995dfbc042",
+    "Kaggle Competition/V5_SubmissionFile/submission.csv": "8c53ec5fe034defafec8066eb2a2c0f8b7332adf02b9c5c3e0c787e794ec4769",
+    "Kaggle Competition/cv_outputs/kaggle_baseline_v1/unet_resnet18_gray_512_seed2026/training_history.json": "68884110db435d68f5dd202eec9e97cded3a1f295074e05eec7ff645af491628",
+    "Kaggle Competition/cv_outputs/kaggle_baseline_v1/unet_resnet18_gray_512_seed2026/holdout_summary.json": "790234e88760ef25c27663a5d8ded3ef8e69fe598340b8259e1156fd79bf6710",
+    "Kaggle Competition/V2Output/results/v2_focused_1024_clahe_from_v1/training_history.json": "21c203666fd7c9797740cc33515dbc597d1163a5e13b65624db2a4c9c09e232a",
+    "Kaggle Competition/reports/v1-v3-assets/summary.json": "f91998b1687cc7372c5347a32727587b6832383cc5966c8737b589b8da116b7c",
+    "Research/Academic Paper/paper_v2_results.json": "77c1ff73b0138575b45975e3a5b28901e70ef9e24eccdd415fc244454b0d4799",
+    "Research/Academic Paper/plot_results_review.py": "9592bee0d69a0cee6e5af135d6530dac3fbd4a23e883f04e1e35aaa6b46fb239"
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "matplotlib": "3.9.4",
+    "scikit-learn": "1.6.1"
+  }
+}

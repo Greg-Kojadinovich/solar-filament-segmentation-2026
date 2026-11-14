@@ -1,0 +1,35 @@
+{
+  "sha256": "723c2223e7c7c0ade31a93fcde78cf110cda2a29dccd6b9724ce71ccfd142af9",
+  "settings": {
+    "yolo_weights": "yolo11s-seg.pt",
+    "image_size": 1024,
+    "batch_size": 4,
+    "yolo_epochs": 60,
+    "yolo_patience": 8,
+    "yolo_hours": 1.25,
+    "crop_size": 256,
+    "crop_context": 1.8,
+    "minimum_crop": 96,
+    "refiner_epochs": 20,
+    "refiner_batch": 16,
+    "refiner_lr": 0.0003,
+    "refiner_patience": 5,
+    "refiner_min_delta": 0.0001,
+    "refiner_hours": 0.5,
+    "tuning_images": 32,
+    "confidences": [
+      0.15,
+      0.25
+    ],
+    "refiner_thresholds": [
+      0.5,
+      0.65
+    ],
+    "min_areas": [
+      20,
+      64
+    ]
+  },
+  "annotation_sha256": "5da9e92b5a1a1947fd5d57adb6688269625c48ec1ef884daf2a01618c9ed54a1",
+  "smoke_test": false
+}

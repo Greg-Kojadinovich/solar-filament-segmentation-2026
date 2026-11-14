@@ -1,0 +1,26 @@
+{
+  "recorded_date": "2026-11-14",
+  "metric": "public Kaggle Panoptic Quality",
+  "verification": "Kaggle CLI competitions submissions; all five submissions Complete",
+  "runs": [
+    {"run": "V1", "submission_id": 58301531, "public_pq": 0.29},
+    {"run": "V2", "submission_id": 58304132, "public_pq": 0.32},
+    {"run": "V3", "submission_id": 58316663, "public_pq": 0.35, "note": "Repaired disjoint CSV"},
+    {"run": "V5", "submission_id": 58327117, "public_pq": 0.36, "csv_sha256": "8c53ec5fe034defafec8066eb2a2c0f8b7332adf02b9c5c3e0c787e794ec4769"},
+    {
+      "run": "V7",
+      "submission_id": 58336694,
+      "public_pq": 0.26,
+      "csv_path": "Kaggle Competition/V7Output/submission_V7_yolo_only.csv",
+      "csv_sha256": "c7c52d9300d53a3f5985eb4e85aee9d2994e7ec8f7d6472258ba1ec07729a635",
+      "rows": 2091,
+      "images_with_predictions": 180,
+      "overlapping_pixels": 0,
+      "epoch_ceiling_per_fold": 10,
+      "folds": 5,
+      "completed_epochs": null,
+      "total_runtime_seconds": null,
+      "note": "CSV hash checked locally; validation counts from completed live export. Not a controlled crop-refiner ablation."
+    }
+  ]
+}

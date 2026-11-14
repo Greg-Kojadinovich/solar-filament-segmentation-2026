@@ -20,7 +20,7 @@ validated competition submissions.
 
 **Computer Vision & Applied Machine Learning**
 
-[Technical report](Research/Academic%20Paper/SolarFilament_V2.pdf) ·
+[Technical report](Research/Academic%20Paper/SolarFilament_V4.pdf) ·
 [V5 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb) ·
 [V5 evidence](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md) ·
 [Competition](https://www.kaggle.com/competitions/filament-segmentation-2026)
@@ -33,12 +33,14 @@ validated competition submissions.
 | Focused V2  | V1 fine-tuning, 1024 px and CLAHE                   |   **0.32** |   58304132 |
 | Repaired V3 | YOLO11s-seg, ResNet18 crop refiner                  |   **0.35** |   58316663 |
 | V5          | Five day-grouped YOLO11s-seg / ResNet34 U-Net pairs |   **0.36** |   58327117 |
+| V7          | Five-fold YOLO11s-seg, no crop refiner, up to 10 epochs/fold | **0.26** | 58336694 |
 
 V5 is the best verified public result so far: **+0.07 absolute PQ** over V1.
 These are exploratory whole-pipeline comparisons, not controlled evidence that
-any single change caused the gain. V4 has no reported competition score; V6
-and V7 are unscored follow-ups. A V7 run was reported in progress; its outcome
-and public score have not been verified here.
+any single change caused the gain. V4 has no reported competition score and V6
+is unscored. V7 completed with 0.26 PQ, 0.10 below V5. This favors investigating
+crop refinement, but does not isolate its effect from the other changed settings.
+The V4 academic report is a document version, not the V4 model experiment.
 
 ## Best-scoring architecture: V5
 
@@ -86,13 +88,16 @@ refiner alone. See the [V5 protocol](Kaggle%20Competition/reports/V5_FAST_FIVE_F
 
 | Resource                                                                                                                     | Purpose                                                                                         |
 | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Visual technical report PDF](Research/Academic%20Paper/SolarFilament_V2.pdf) · [LaTeX source](Research/Academic%20Paper/SolarFilament_V2.tex) | Current draft for the first report submission; measured results through V5 and visual analysis. |
+| [V4 final report PDF](Research/Academic%20Paper/SolarFilament_V4.pdf) · [LaTeX source](Research/Academic%20Paper/SolarFilament_V4.tex) | Final draft including the verified V7 result and crop-refinement discussion. |
+| [V3 technical report PDF](Research/Academic%20Paper/SolarFilament_V3.pdf) · [LaTeX source](Research/Academic%20Paper/SolarFilament_V3.tex) | Previous draft; results through V5, preserved. |
+| [V2 report PDF](Research/Academic%20Paper/SolarFilament_V2.pdf) · [source](Research/Academic%20Paper/SolarFilament_V2.tex) | Previous visual report draft, retained for comparison. |
+| [Results review](Research/Academic%20Paper/RESULTS_REVIEW.md) | Loss histories, labeled V1 metrics, and prediction agreement across four runs. |
 | [First-draft PDF](Research/Academic%20Paper/SolarFilament.pdf) · [source](Research/Academic%20Paper/SolarFilament.tex) | Historical report, retained for comparison. |
 | [Baseline notebook](Kaggle%20Competition/Notebooks/solar-filament-cv.ipynb) | ResNet18 U-Net shown in the video. |
 | [Focused V2 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V2_focused.ipynb) · [saved evidence](Kaggle%20Competition/V2Output/results/v2_focused_1024_clahe_from_v1/) | Scored higher-resolution fine-tuning experiment. |
 | [V3 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V3.ipynb) · [mask analysis](Kaggle%20Competition/reports/V1_V2_V3_MASK_EDA_V4.md) | Instance proposals, crop refinement, and failure analysis. |
 | [V5 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb) · [protocol](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md) | Best verified five-fold ensemble and submission provenance. |
-| [V6 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V6_grouped.ipynb) · [V7 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb) | Unscored longer-training and YOLO-only follow-ups. |
+| [V6 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V6_grouped.ipynb) · [V7 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb) | Unscored V6 and scored YOLO-only V7 (0.26 PQ). |
 | [Research notebook](Research/Notes/solar_filament_data_and_research.ipynb) · [CV tutorial](Research/Notes/CV_TUTORIAL.md) · [tests](Kaggle%20Competition/pythontests/) | Exploration, educational material, and regression checks. |
 
 The [notebooks](Kaggle%20Competition/Notebooks/) are the canonical implementations.
@@ -137,13 +142,16 @@ python "Kaggle Competition/Python Files/submission_masks.py" \
 The repair writes a separate CSV and audit; submit the repaired file, not the
 original. It does not recalibrate the model or upload a submission.
 
-**Rebuild the V2 report and run checks** from the repository root in an
+**Rebuild the reports and run checks** from the repository root in an
 environment with the plotting and notebook dependencies:
 
 ```bash
 python -m pip install -r "Research/Academic Paper/requirements-figures.txt"
 python "Research/Academic Paper/plot_paper_v2.py"
+python "Research/Academic Paper/plot_pipeline_architectures.py"
 tectonic -X compile "Research/Academic Paper/SolarFilament_V2.tex" --outdir "Research/Academic Paper"
+tectonic -X compile "Research/Academic Paper/SolarFilament_V3.tex" --outdir "Research/Academic Paper"
+tectonic -X compile "Research/Academic Paper/SolarFilament_V4.tex" --outdir "Research/Academic Paper"
 PYTHONPATH="Kaggle Competition/Python Files" python -m unittest discover -s "Kaggle Competition/pythontests" -p 'test_*.py'
 ```
 
@@ -151,11 +159,11 @@ Additional model dependencies are listed in [Requirements/](Requirements/).
 
 ## Document control and submission
 
-The current [V2 report](Research/Academic%20Paper/SolarFilament_V2.pdf) is the draft for the
-first technical-report submission. Preserve its reviewed PDF, repository
-revision, V5 submission ID, score, and supporting artifacts. A later report can
-include V7 only after its run, submission, and score are verified. Local edits
-are not public until committed and pushed.
+The current [V4 report](Research/Academic%20Paper/SolarFilament_V4.pdf) is the final
+draft including verified V7 submission 58336694 (0.26 PQ). Earlier paper drafts
+are retained. Preserve the reviewed PDF, repository revision, submission IDs,
+scores, and supporting artifacts. Local edits are not public until committed
+and pushed.
 
 The competition prediction submission does not replace the organizers' judging
 form and report upload. Check the form's current requirements and deadline.
