@@ -222,11 +222,17 @@ __marimo__/
 # Local competition data and generated experiment outputs
 /data/
 /cv_outputs/
+/Kaggle Competition/data/
+/Kaggle Competition/cv_outputs/
+/Kaggle Competition/ReferenceNotebooks/
 *.mp4
 !/baselinevideo/download.mp4
 *.gif
 !/baselinevideo/preview-60s.mp4
 !/baselinevideo/preview-60s.gif
+!/Research/Baseline Video/download.mp4
+!/Research/Baseline Video/preview-60s.mp4
+!/Research/Baseline Video/preview-60s.gif
 
 # Local credentials and macOS metadata
 kaggle.json
@@ -243,7 +249,15 @@ huggingface_token
 huggingface_token.txt
 
 # Reference material and local authoring/build artifacts
-/Research/
+/Research/*
+!/Research/Academic Paper/
+!/Research/Baseline Video/
+!/Research/Notes/
+/Research/Notes/*
+!/Research/Notes/CV_TUTORIAL.md
+!/Research/Notes/Solar Filament CV
+!/Research/Notes/solar_filament_data_and_research.ipynb
+!/Research/Notes/timeconstraints
 /ESAIRResearch/
 /ESAIRPoster/
 /TopScoreNotebooks/
@@ -258,3 +272,5 @@ huggingface_token.txt
 # Disposable API upload copy; canonical notebook lives at the repository root.
 /kaggle-v3/solar_filament_CV_V3.ipynb
 /kaggle-v4/solar_filament_CV_V4.ipynb
+/Kaggle Competition/kaggle-v3/solar_filament_CV_V3.ipynb
+/Kaggle Competition/kaggle-v4/solar_filament_CV_V4.ipynb

@@ -1,10 +1,10 @@
 # Solar Filament Segmentation Challenge 2026
 
-<a href="baselinevideo/preview-60s.mp4">
-  <img src="baselinevideo/preview-60s.gif" alt="Solar filament segmentation review showing grayscale observations, human annotations, and predicted masks" width="1600">
+<a href="Research/Baseline%20Video/preview-60s.mp4">
+  <img src="Research/Baseline%20Video/preview-60s.gif" alt="Solar filament segmentation review showing grayscale observations, human annotations, and predicted masks" width="1600">
 </a>
 
-**[Watch the 60-second baseline review](baselinevideo/preview-60s.mp4)**
+**[Watch the 60-second baseline review](Research/Baseline%20Video/preview-60s.mp4)**
 
 The video shows baseline predictions alongside human annotations. It includes
 training, tuning, and holdout images, so it is a qualitative review—not an
@@ -20,9 +20,9 @@ validated competition submissions.
 
 **Computer Vision & Applied Machine Learning**
 
-[Technical report](AcademicPaper/SolarFilament_V2.pdf) ·
-[V5 notebook](solar_filament_CV_V5_grouped.ipynb) ·
-[V5 evidence](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md) ·
+[Technical report](Research/Academic%20Paper/SolarFilament_V2.pdf) ·
+[V5 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb) ·
+[V5 evidence](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md) ·
 [Competition](https://www.kaggle.com/competitions/filament-segmentation-2026)
 
 ## Results
@@ -58,7 +58,7 @@ flowchart TD
 Each fold trains a detector and refiner; inner tuning selects which output to
 use. All five models contribute to fusion, which has no separately trained
 parameters. The public score evaluates this complete pipeline, not the
-refiner alone. See the [V5 protocol](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
+refiner alone. See the [V5 protocol](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
 
 ## Technical observations
 
@@ -74,8 +74,8 @@ refiner alone. See the [V5 protocol](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
   and votes on foreground pixels.
 - **Submission integrity:** masks are made disjoint and checked for valid RLE,
   dimensions, IDs, CSV readback, and overlaps. The accepted
-  [V5 CSV](V5_SubmissionFile/submission.csv) contains 1,127 masks across
-  177 images; its [audit and provenance](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md)
+  [V5 CSV](Kaggle%20Competition/V5_SubmissionFile/submission.csv) contains 1,127 masks across
+  177 images; its [audit and provenance](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md)
   describe the three images without retained predictions.
 - **Limitations:** the labeled data have been used during development, public
   scores are not causal ablations, and final V1/V3/V5 weights, calibration,
@@ -86,18 +86,21 @@ refiner alone. See the [V5 protocol](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
 
 | Resource                                                                                                                     | Purpose                                                                                         |
 | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [Visual technical report PDF](AcademicPaper/SolarFilament_V2.pdf) · [LaTeX source](AcademicPaper/SolarFilament_V2.tex)        | Current draft for the first report submission; measured results through V5 and visual analysis. |
-| [First-draft PDF](AcademicPaper/SolarFilament.pdf) · [source](AcademicPaper/SolarFilament.tex)                                | Historical report, retained for comparison.                                                     |
-| [Baseline notebook](RunningNotebook/solar-filament-cv.ipynb)                                                                  | ResNet18 U-Net shown in the video.                                                              |
-| [Focused V2 notebook](solar_filament_CV_V2_focused.ipynb) · [saved evidence](V2Output/results/v2_focused_1024_clahe_from_v1/) | Scored higher-resolution fine-tuning experiment.                                                |
-| [V3 notebook](solar_filament_CV_V3.ipynb) · [mask analysis](reports/V1_V2_V3_MASK_EDA_V4.md)                                  | Instance proposals, crop refinement, and failure analysis.                                      |
-| [V5 notebook](solar_filament_CV_V5_grouped.ipynb) · [protocol](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md)                       | Best verified five-fold ensemble and submission provenance.                                     |
-| [V6 notebook](solar_filament_CV_V6_grouped.ipynb) · [V7 notebook](solar_filament_CV_V7_yolo_only.ipynb)                       | Unscored longer-training and YOLO-only follow-ups.                                              |
-| [Research notebook](solar_filament_data_and_research.ipynb) · [CV tutorial](CV_TUTORIAL.md) · [tests](tests/)                 | Exploration, educational material, and regression checks.                                       |
+| [Visual technical report PDF](Research/Academic%20Paper/SolarFilament_V2.pdf) · [LaTeX source](Research/Academic%20Paper/SolarFilament_V2.tex) | Current draft for the first report submission; measured results through V5 and visual analysis. |
+| [First-draft PDF](Research/Academic%20Paper/SolarFilament.pdf) · [source](Research/Academic%20Paper/SolarFilament.tex) | Historical report, retained for comparison. |
+| [Baseline notebook](Kaggle%20Competition/Notebooks/solar-filament-cv.ipynb) | ResNet18 U-Net shown in the video. |
+| [Focused V2 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V2_focused.ipynb) · [saved evidence](Kaggle%20Competition/V2Output/results/v2_focused_1024_clahe_from_v1/) | Scored higher-resolution fine-tuning experiment. |
+| [V3 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V3.ipynb) · [mask analysis](Kaggle%20Competition/reports/V1_V2_V3_MASK_EDA_V4.md) | Instance proposals, crop refinement, and failure analysis. |
+| [V5 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb) · [protocol](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md) | Best verified five-fold ensemble and submission provenance. |
+| [V6 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V6_grouped.ipynb) · [V7 notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb) | Unscored longer-training and YOLO-only follow-ups. |
+| [Research notebook](Research/Notes/solar_filament_data_and_research.ipynb) · [CV tutorial](Research/Notes/CV_TUTORIAL.md) · [tests](Kaggle%20Competition/pythontests/) | Exploration, educational material, and regression checks. |
 
-Root notebooks are the canonical implementations. The `kaggle-v3/` and
-`kaggle-v4/` directories are API upload staging. [Shared CV orchestration](grouped_yolo_cv.py),
-[mask validation](submission_masks.py), and the [V7 runtime](v7_yolo_runtime.py)
+The [notebooks](Kaggle%20Competition/Notebooks/) are the canonical implementations.
+The [kaggle-v3](Kaggle%20Competition/kaggle-v3/) and
+[kaggle-v4](Kaggle%20Competition/kaggle-v4/) directories are API upload staging.
+[Shared CV orchestration](Kaggle%20Competition/Python%20Files/grouped_yolo_cv.py),
+[mask validation](Kaggle%20Competition/Python%20Files/submission_masks.py), and
+the [V7 runtime](Kaggle%20Competition/Python%20Files/v7_yolo_runtime.py)
 support the standalone notebooks.
 
 ## Run and reproduce
@@ -107,11 +110,11 @@ and review the selected notebook's configuration before running. Download
 outputs and inspect their plan, checkpoint hashes, calibration, and submission
 audit; a notebook title alone does not establish which model produced a CSV.
 
-**V5:** Follow the [five-fold protocol](reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
+**V5:** Follow the [five-fold protocol](Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md).
 All five completed folds are required for export. The notebook prepares a
 validated CSV but does not automatically upload it.
 
-**V7:** The [YOLO-only notebook](solar_filament_CV_V7_yolo_only.ipynb) uses
+**V7:** The [YOLO-only notebook](Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb) uses
 five day-grouped folds, up to 10 epochs per fold, no wall-clock training limit,
 and no crop refiner. It targets Kaggle T4x2 with training batch 10 total;
 inference uses GPU 0 with batch 8. After five complete folds, it validates and
@@ -123,30 +126,32 @@ validation pass does not guarantee Kaggle acceptance or a higher score.
 submission removes overlap without retraining:
 
 ```bash
-kaggle kernels output gregkoja/solar-filament-cv-v3 -p cv_outputs/kaggle_v3
-python submission_masks.py \
-  cv_outputs/kaggle_v3/submission.csv \
-  cv_outputs/kaggle_v3/submission_disjoint.csv \
-  --test-dir data/MAGFiLO_1.0_Kaggle_2026/test --min-area 20
+mkdir -p "Kaggle Competition/cv_outputs/v3_repair"
+kaggle kernels output gregkoja/solar-filament-cv-v3 -p "Kaggle Competition/cv_outputs/v3_repair"
+python "Kaggle Competition/Python Files/submission_masks.py" \
+  "Kaggle Competition/cv_outputs/v3_repair/submission.csv" \
+  "Kaggle Competition/cv_outputs/v3_repair/submission_disjoint.csv" \
+  --test-dir "Kaggle Competition/data/MAGFiLO_1.0_Kaggle_2026/test" --min-area 20
 ```
 
 The repair writes a separate CSV and audit; submit the repaired file, not the
 original. It does not recalibrate the model or upload a submission.
 
-**Rebuild the report and run checks** in the project dependency environment:
+**Rebuild the V2 report and run checks** from the repository root in an
+environment with the plotting and notebook dependencies:
 
 ```bash
-python AcademicPaper/plot_paper_v2.py
-tectonic -X compile AcademicPaper/SolarFilament_V2.tex --outdir AcademicPaper
-python -m unittest discover -s tests -p 'test_*.py'
+python -m pip install -r "Research/Academic Paper/requirements-figures.txt"
+python "Research/Academic Paper/plot_paper_v2.py"
+tectonic -X compile "Research/Academic Paper/SolarFilament_V2.tex" --outdir "Research/Academic Paper"
+PYTHONPATH="Kaggle Competition/Python Files" python -m unittest discover -s "Kaggle Competition/pythontests" -p 'test_*.py'
 ```
 
-Plotting dependencies are listed in
-[requirements-figures.txt](AcademicPaper/requirements-figures.txt).
+Additional model dependencies are listed in [Requirements/](Requirements/).
 
 ## Document control and submission
 
-The current [V2 report](AcademicPaper/SolarFilament_V2.pdf) is the draft for the
+The current [V2 report](Research/Academic%20Paper/SolarFilament_V2.pdf) is the draft for the
 first technical-report submission. Preserve its reviewed PDF, repository
 revision, V5 submission ID, score, and supporting artifacts. A later report can
 include V7 only after its run, submission, and score are verified. Local edits
