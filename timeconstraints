@@ -1,0 +1,18 @@
+V5
+
+The coded limits are:
+
+Scope	Logic
+Total target	120 minutes, clock starts before package installation
+Training window	First 100 minutes; final 20 minutes reserved for ensemble export
+Each fold	Remaining training time ÷ remaining folds, recalculated before each fold
+YOLO	Maximum 5 epochs, with 40% of the fold’s remaining allowance; deadline checked after each training batch
+ResNet34 refiner	Maximum 2 epochs, stopping at the fold deadline; checked before each batch
+For example, with no setup overhead, fold 0 gets approximately 20 minutes: up to 8 minutes YOLO, then the remaining time for the refiner. If YOLO finishes early, the refiner can use that saved time.
+
+Important limitations:
+
+Calibration and outer-fold evaluation have no time cutoff; their elapsed time reduces later folds’ allowances.
+An incomplete refiner epoch is discarded; its best completed checkpoint is retained. Without any completed checkpoint, the run fails explicitly.
+Five-model inference/export has no hard cutoff.
+So this is a cooperative two-hour target—not a guaranteed two-hour stop.

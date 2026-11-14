@@ -1,5 +1,23 @@
 # V5: short five-fold training and a competition submission CSV
 
+## Verified result: public PQ 0.36
+
+Kaggle submission **58327117** is **Complete**, with public PQ **0.36**,
+verified through the API on November 13, 2026 (local date).
+This is **+0.01** over repaired V3 and exceeds the organizers' stated **>0.35**
+threshold. It is a whole-pipeline comparison, not a controlled encoder ablation.
+The [accepted CSV](../V5_SubmissionFile/submission.csv) contains 1127 masks across
+177 images; local decoding found zero overlaps. SHA-256:
+`8c53ec5fe034defafec8066eb2a2c0f8b7332adf02b9c5c3e0c787e794ec4769`.
+
+The original budget expired before fold 4 completed a refiner epoch.
+Folds 0–3 were preserved and fold 4's refiner was retried without a deadline,
+reusing its detector. The completed run did **not** meet the two-hour target.
+Final per-fold epoch counts and full runtime require the preserved execution logs.
+An earlier rejected upload, **58326839**, selected stale saved-version V3 output,
+not the five-fold ensemble. Use the live export and verify its hash against
+`ensemble_audit.json`; a notebook title alone does not establish output provenance.
+
 ## Current defaults
 
 The [V5 notebook](../solar_filament_CV_V5_grouped.ipynb) now keeps **five folds
@@ -41,8 +59,8 @@ minute 100 is divided equally across the remaining selected folds:
 
 These are **cooperative checks**, not hard process interruption. Installation,
 downloads, validation, one GPU operation, outer evaluation, and export can
-exceed the allotted times. Actual full-data two-hour completion has **not**
-been measured and is not guaranteed. The two refiner epochs may be truncated.
+exceed the allotted times. The scored run required deadline-free recovery
+and exceeded the target. The two refiner epochs may be truncated.
 ResNet34 has more capacity and cost than ResNet18; short training does not
 guarantee convergence or a higher score.
 

@@ -1,0 +1,44 @@
+{
+  "metric": "public Kaggle Panoptic Quality (PQ), not pixel accuracy",
+  "recorded_date": "2026-11-13",
+  "provenance": "All four completed submission scores verified through the Kaggle API; identifiers retained for independent checking. V5 submission 58327117 completed with public PQ 0.36. The earlier rejected upload 58326839 was an older V3 artifact, not the live ensemble.",
+  "runs": [
+    {
+      "run": "V1",
+      "submission_id": 58301531,
+      "status": "complete",
+      "public_pq": 0.29,
+      "headline_change": "Semantic baseline",
+      "chart_label": "ResNet18 U-Net\n512px; semantic masks",
+      "comparison": "Reference experiment, not an ablation control for every later change."
+    },
+    {
+      "run": "V2",
+      "submission_id": 58304132,
+      "status": "complete",
+      "public_pq": 0.32,
+      "headline_change": "Resolution and contrast",
+      "chart_label": "1024px + CLAHE\nFine-tune V1; lower LR",
+      "comparison": "Focused V2, not the separate three-fold V2 research notebook. Multiple settings changed."
+    },
+    {
+      "run": "V3",
+      "submission_id": 58316663,
+      "status": "complete",
+      "public_pq": 0.35,
+      "headline_change": "Instance-aware prediction",
+      "chart_label": "YOLO11s + ResNet18\nCrop U-Net; repaired CSV",
+      "comparison": "Score belongs to disjoint-mask offline repair, not rejected original CSV or later recalibration."
+    },
+    {
+      "run": "V5",
+      "submission_id": 58327117,
+      "status": "complete",
+      "public_pq": 0.36,
+      "csv_sha256": "8c53ec5fe034defafec8066eb2a2c0f8b7332adf02b9c5c3e0c787e794ec4769",
+      "headline_change": "Grouped ensemble and deeper refiner",
+      "chart_label": "5 folds + ResNet34\nEqual-weight mask voting",
+      "comparison": "Five independently trained model pairs, not a separately trained ensemble network. No measured encoder-only or pretrained-versus-random ablation."
+    }
+  ]
+}

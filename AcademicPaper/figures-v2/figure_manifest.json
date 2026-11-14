@@ -1,0 +1,68 @@
+{
+  "generator": "AcademicPaper/plot_paper_v2.py",
+  "versions": {
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1"
+  },
+  "sources": {
+    "AcademicPaper/paper_v2_results.json": "77c1ff73b0138575b45975e3a5b28901e70ef9e24eccdd415fc244454b0d4799",
+    "reports/v1-v3-assets/summary.json": "f91998b1687cc7372c5347a32727587b6832383cc5966c8737b589b8da116b7c",
+    "V2Output/results/v2_focused_1024_clahe_from_v1/training_history.json": "21c203666fd7c9797740cc33515dbc597d1163a5e13b65624db2a4c9c09e232a",
+    "reports/v1-v3-assets/detail-1.png": "c684b4c870a435212311516cc0f85569680c3707094864cdfd56fb4b0e7e0b43",
+    "AcademicPaper/plot_paper_v2.py": "78113143c576168bc2eb21b0a9c4e5fd3c4e26025f71893d704855697f7051d1"
+  },
+  "measurements": {
+    "metric": "public Kaggle Panoptic Quality (PQ), not pixel accuracy",
+    "recorded_date": "2026-11-13",
+    "provenance": "All four completed submission scores verified through the Kaggle API; identifiers retained for independent checking. V5 submission 58327117 completed with public PQ 0.36. The earlier rejected upload 58326839 was an older V3 artifact, not the live ensemble.",
+    "runs": [
+      {
+        "run": "V1",
+        "submission_id": 58301531,
+        "status": "complete",
+        "public_pq": 0.29,
+        "headline_change": "Semantic baseline",
+        "chart_label": "ResNet18 U-Net\n512px; semantic masks",
+        "comparison": "Reference experiment, not an ablation control for every later change."
+      },
+      {
+        "run": "V2",
+        "submission_id": 58304132,
+        "status": "complete",
+        "public_pq": 0.32,
+        "headline_change": "Resolution and contrast",
+        "chart_label": "1024px + CLAHE\nFine-tune V1; lower LR",
+        "comparison": "Focused V2, not the separate three-fold V2 research notebook. Multiple settings changed."
+      },
+      {
+        "run": "V3",
+        "submission_id": 58316663,
+        "status": "complete",
+        "public_pq": 0.35,
+        "headline_change": "Instance-aware prediction",
+        "chart_label": "YOLO11s + ResNet18\nCrop U-Net; repaired CSV",
+        "comparison": "Score belongs to disjoint-mask offline repair, not rejected original CSV or later recalibration."
+      },
+      {
+        "run": "V5",
+        "submission_id": 58327117,
+        "status": "complete",
+        "public_pq": 0.36,
+        "csv_sha256": "8c53ec5fe034defafec8066eb2a2c0f8b7332adf02b9c5c3e0c787e794ec4769",
+        "headline_change": "Grouped ensemble and deeper refiner",
+        "chart_label": "5 folds + ResNet34\nEqual-weight mask voting",
+        "comparison": "Five independently trained model pairs, not a separately trained ensemble network. No measured encoder-only or pretrained-versus-random ablation."
+      }
+    ]
+  },
+  "figures": [
+    "score_progression",
+    "workflow",
+    "folds_and_fusion",
+    "training_and_geometry",
+    "mask_comparison"
+  ],
+  "note": "SVG/PDF are vector exports; raster observation panels remain embedded images. SVGs are editable/importable artwork, not native Visio .vsdx documents. No test ground truth, confidence intervals, or V5 score are fabricated."
+}
