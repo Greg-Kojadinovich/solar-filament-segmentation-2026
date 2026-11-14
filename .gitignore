@@ -225,6 +225,8 @@ __marimo__/
 /Kaggle Competition/data/
 /Kaggle Competition/cv_outputs/
 /Kaggle Competition/ReferenceNotebooks/
+/Kaggle Competition/V5 Output/results.zip
+/Kaggle Competition/V5 Output/results/v3_yolo11s_crop_unet_seed2026/refiner_best.pt
 *.mp4
 !/baselinevideo/download.mp4
 *.gif
