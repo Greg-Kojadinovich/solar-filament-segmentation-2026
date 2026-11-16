@@ -1,181 +1,122 @@
+<div align="center">
+
 # Solar Filament Segmentation Challenge 2026
 
-## Computer Vision Modeling for a Dynamic Sun
+# **Computer Vision**
 
-COMPUTER VISION PIPELINE
+### Teaching computer vision to find and outline the Sun's filaments
+
+[![Competition](https://img.shields.io/badge/Kaggle-Filament%20Segmentation%202026-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/competitions/filament-segmentation-2026)
+![Best public score](https://img.shields.io/badge/best%20public%20score-0.37-3fb950)
+![PyTorch](https://img.shields.io/badge/PyTorch-Mask%20R--CNN-EE4C2C?logo=pytorch&logoColor=white)
+![YOLO](https://img.shields.io/badge/Ultralytics-YOLO11--seg-111F68)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 <a href="Research/Baseline%20Video/preview-60s.mp4">
-  <img src="Research/Baseline%20Video/preview-60s.gif" alt="Solar filament segmentation review showing grayscale observations, human annotations, and predicted masks" width="1600">
+  <img src="Research/Baseline%20Video/preview-60s.gif" alt="Solar filament segmentation review showing grayscale observations, human annotations, and predicted masks" width="100%">
 </a>
 
 **[Watch the 60-second baseline review](<Research/Baseline%20Video/preview-60s.mp4>)**
 
+</div>
+
 **Computer Vision & Applied Machine Learning**
 
-The video shows baseline predictions alongside human annotations. It includes
-training, tuning, and holdout images, so it is a qualitative review—not an
-independent performance measurement. Boxes are derived from predicted masks.
+<p align="center">
+  <img src="assets/score_chart.png" alt="Bar chart of public leaderboard scores: V1 0.29, V2 0.32, V3 0.35, V5 0.36, V7 0.26, V11 0.37, V13 0.37" width="100%">
+</p>
 
-Solar filaments are thin, irregular structures that can be difficult to identify
-and separate in solar images. This project applies computer vision to turn
-grayscale GONG H-alpha observations into individual filament masks: from
-scientific image ingestion and model training to measurable evaluation and
-validated competition submissions.
+<p align="center">
+  <a href="Kaggle%20Competition/Notebooks/solar_filament_CV_V13_maskrcnn_refiner.ipynb"><b>Solar Vision V13 notebook</b></a> &nbsp;·&nbsp; PyTorch Mask R-CNN, <b>0.37</b>
+  <br>
+  <a href="Kaggle%20Competition/Notebooks/solar_filament_CV_V11_crop_refined.ipynb"><b>YOLO V11 notebook</b></a> &nbsp;·&nbsp; YOLO11-seg with solar filters, <b>0.37</b>
+  <br><br>
+  <a href="TABLE_OF_CONTENTS.md"><b>Full table of contents</b></a> &nbsp;·&nbsp; every notebook, report and evidence file
+</p>
 
-[Technical report](<Research/Academic%20Paper/SolarFilament_V4.pdf>) ·
-[V5 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb>) ·
-[V5 evidence](<Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md>) ·
-[Competition](https://www.kaggle.com/competitions/filament-segmentation-2026)
+---
 
-## Results
+## Two Pipeline Solutions, One Goal
 
-| Experiment  | Technical change                                             | Public Kaggle PQ | Submission |
-| ----------- | ------------------------------------------------------------ | ---------------: | ---------: |
-| V1          | ResNet18 U-Net baseline, 512 px                              |   **0.29** |   58301531 |
-| Focused V2  | V1 fine-tuning, 1024 px and CLAHE                            |   **0.32** |   58304132 |
-| Repaired V3 | YOLO11s-seg, ResNet18 crop refiner                           |   **0.35** |   58316663 |
-| V5          | Five day-grouped YOLO11s-seg / ResNet34 U-Net pairs          |   **0.36** |   58327117 |
-| V7          | Five-fold YOLO11s-seg, no crop refiner, up to 10 epochs/fold |   **0.26** |   58336694 |
+<p align="center">
+  <img src="assets/architecture_both_pipelines.png" alt="Architecture diagram of the YOLO V11 pipeline and the PyTorch Mask R-CNN V13 pipeline" width="100%">
+</p>
 
-V5 is the best verified public result so far: **+0.07 absolute PQ** over V1.
-These are exploratory whole-pipeline comparisons, not controlled evidence that
-any single change caused the gain. V4 has no reported competition score and V6
-is unscored. V7 completed with 0.26 PQ, 0.10 below V5. This favors investigating
-crop refinement, but does not isolate its effect from the other changed settings.
-The V4 academic report is a document version, not the V4 model experiment.
+| | **YOLO V11** | **PyTorch V13** |
+| --- | --- | --- |
+| **Detector** | YOLO11s-seg at 1280 px | Mask R-CNN ResNet50-FPN V2 at 1024 px |
+| **Crop refiner** | ResNet34 U-Net, detector mask as 4th channel | ResNet18 U-Net, 4 flipped copies averaged |
+| **Solar tricks** | Sun's rim fitted, brightness flattened, 3 filter channels | Plain grayscale frame |
+| **Test-time voting** | 8 rotated and flipped views | 4 flipped views, up to 10 candidates each, voted down |
+| **Public score** | **0.37** | **0.37** |
 
-## Best-scoring architecture: V5
+## The task
 
-```mermaid
-flowchart TD
-    A["2048 x 2048 grayscale solar observation"] --> B["Five independently trained day-grouped fold models"]
-    B --> C["Per fold: YOLO11s-seg instance proposals at 1024 px"]
-    C --> D["Optional 256 px crop refinement: ResNet34 U-Net"]
-    C --> E["Inner-selected YOLO-only or refined masks"]
-    D --> E
-    E --> F["Match instances across folds at IoU >= 0.5"]
-    F --> G["3-of-5 instance and pixel voting"]
-    G --> H["Area filtering and disjoint-mask ownership"]
-    H --> I["Validated COCO RLE submission CSV"]
-```
+What Are Solar Filaments?
+Filaments (as shown below) are dense "clouds" of solar material suspended by magnetic field lines above photospheric neutral lines. The significance of filaments for space weather research lies in the fact that they are at the core of solar eruptions, including Coronal Mass Ejections (CMEs), solar flares, and Solar Energetic Particle (SEP) storms. An Earth-directed CME can cause enormous damage to the electric power grid, disrupt GPS systems, create radiation hazards for passengers and crew on polar flights, and be lethal to astronauts traveling outside the protective bubble provided by the Earth's magnetosphere. This is why solar filaments are a critical event type in space weather research and forecasting operations.
 
-Each fold trains a detector and refiner; inner tuning selects which output to
-use. All five models contribute to fusion, which has no separately trained
-parameters. The public score evaluates this complete pipeline, not the
-refiner alone. See the [V5 protocol](<Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md>).
 
-## Technical observations
 
-- **Input:** 2048 × 2048 grayscale H-alpha intensity images, not magnetograms.
-  The task segments filament instances; it does not infer chirality or magnetic
-  polarity.
-- **Evaluation:** observation-day grouping keeps photographs and their
-  annotator-specific targets together. Inner tuning selects model settings;
-  outer holdouts evaluate the selected fold models. Fold metrics are not a
-  five-model ensemble score.
-- **Instance quality:** YOLO proposes separate objects; optional U-Net
-  refinement adjusts local masks. The ensemble matches instances across folds
-  and votes on foreground pixels.
-- **Submission integrity:** masks are made disjoint and checked for valid RLE,
-  dimensions, IDs, CSV readback, and overlaps. The accepted
-  [V5 CSV](<Kaggle%20Competition/V5_SubmissionFile/submission.csv>) contains 1,127 masks across
-  177 images; its [audit and provenance](<Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md>)
-  describe the three images without retained predictions.
-- **Limitations:** the labeled data have been used during development, public
-  scores are not causal ablations, and final V1/V3/V5 weights, calibration,
-  logs, and pinned environments still need to be published for complete
-  reproduction. The scored V5 run exceeded its original two-hour target.
+Solar filaments are thin, dark, irregular ribbons of cool gas floating above the Sun's surface. Finding them one by one in GONG H-alpha photographs matters for space-weather research, and it is hard: they are only about 8 to 11 pixels wide on a 2048 x 2048 frame, they curl, they touch, and even expert annotators disagree about where one ends and the next begins.
 
-## Explore the work
+This project turns each grayscale solar photograph into **one clean mask per filament**: from scientific image ingestion and model training to measurable evaluation and validated competition submissions.
 
-| Resource                                                                                                                                                                             | Purpose                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| [V4 final report PDF](<Research/Academic%20Paper/SolarFilament_V4.pdf>) · [LaTeX source](<Research/Academic%20Paper/SolarFilament_V4.tex>)                                            | Final draft including the verified V7 result and crop-refinement discussion.   |
-| [V3 technical report PDF](<Research/Academic%20Paper/SolarFilament_V3.pdf>) · [LaTeX source](<Research/Academic%20Paper/SolarFilament_V3.tex>)                                        | Previous draft; results through V5, preserved.                                 |
-| [V2 report PDF](<Research/Academic%20Paper/SolarFilament_V2.pdf>) · [source](<Research/Academic%20Paper/SolarFilament_V2.tex>)                                                        | Previous visual report draft, retained for comparison.                         |
-| [Results review](<Research/Academic%20Paper/RESULTS_REVIEW.md>)                                                                                                                       | Loss histories, labeled V1 metrics, and prediction agreement across four runs. |
-| [First-draft PDF](<Research/Academic%20Paper/SolarFilament.pdf>) · [source](<Research/Academic%20Paper/SolarFilament.tex>)                                                            | Historical report, retained for comparison.                                    |
-| [Baseline notebook](<Kaggle%20Competition/Notebooks/solar-filament-cv.ipynb>)                                                                                                         | ResNet18 U-Net shown in the video.                                             |
-| [Focused V2 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V2_focused.ipynb>) · [saved evidence](<Kaggle%20Competition/V2Output/results/v2_focused_1024_clahe_from_v1/>) | Scored higher-resolution fine-tuning experiment.                               |
-| [V3 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V3.ipynb>) · [mask analysis](<Kaggle%20Competition/reports/V1_V2_V3_MASK_EDA_V4.md>)                                  | Instance proposals, crop refinement, and failure analysis.                     |
-| [V5 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V5_grouped.ipynb>) · [protocol](<Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md>)                       | Best verified five-fold ensemble and submission provenance.                    |
-| [V6 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V6_grouped.ipynb>) · [V7 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb>)             | Unscored V6 and scored YOLO-only V7 (0.26 PQ).                                 |
-| [Research notebook](Research/Notes/solar_filament_data_and_research.ipynb) · [CV tutorial](Research/Notes/CV_TUTORIAL.md) · [tests](<Kaggle%20Competition/pythontests/>)              | Exploration, educational material, and regression checks.                      |
+| **Input** | **Output** | **Score** |
+| :---: | :---: | :---: |
+| 2048 x 2048 grayscale H-alpha observation | One mask for every filament | Panoptic Quality (PQ) |
 
-The [notebooks](<Kaggle%20Competition/Notebooks/>) are the canonical implementations.
-The [kaggle-v3](<Kaggle%20Competition/kaggle-v3/>) and
-[kaggle-v4](<Kaggle%20Competition/kaggle-v4/>) directories are API upload staging.
-[Shared CV orchestration](<Kaggle%20Competition/Python%20Files/grouped_yolo_cv.py>),
-[mask validation](<Kaggle%20Competition/Python%20Files/submission_masks.py>), and
-the [V7 runtime](<Kaggle%20Competition/Python%20Files/v7_yolo_runtime.py>)
-support the standalone notebooks.
+## Results at a glance
 
-## Run and reproduce
+| Experiment | What changed | Public PQ |
+| --- | --- | ---: |
+| V1 | ResNet18 U-Net baseline, 512 px | 0.29 |
+| V2 | Fine-tuned at 1024 px with CLAHE | 0.32 |
+| V3 | YOLO11s-seg and a crop refiner | 0.35 |
+| V5 | Five-fold YOLO ensemble | 0.36 |
+| V7 | YOLO only, no refiner | 0.26 |
+| **V11** | **YOLO, solar filters, 8-view voting** | **0.37** |
+| **V13** | **PyTorch Mask R-CNN, flip voting** | **0.37** |
 
-Attach the competition dataset to a Kaggle notebook, enable Internet and a GPU,
-and review the selected notebook's configuration before running. Download
-outputs and inspect their plan, checkpoint hashes, calibration, and submission
-audit; a notebook title alone does not establish which model produced a CSV.
+Scores are whole-pipeline comparisons, not controlled experiments. Every full notebook is listed in the
+[table of contents](TABLE_OF_CONTENTS.md#notebooks-by-version).
 
-**V5:** Follow the [five-fold protocol](<Kaggle%20Competition/reports/V5_FAST_FIVE_FOLD_SUBMISSION.md>).
-All five completed folds are required for export. The notebook prepares a
-validated CSV but does not automatically upload it.
+## What we learned
 
-**V7:** The [YOLO-only notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V7_yolo_only.ipynb>) uses
-five day-grouped folds, up to 10 epochs per fold, no wall-clock training limit,
-and no crop refiner. It targets Kaggle T4x2 with training batch 10 total;
-inference uses GPU 0 with batch 8. After five complete folds, it validates and
-submits the CSV automatically. Add Kaggle Notebook Secrets named
-`KAGGLE_USERNAME` and `KAGGLE_KEY` before running the submission cell. A local
-validation pass does not guarantee Kaggle acceptance or a higher score.
+- **Humans disagree too.** Two annotators labeling the same photo agree at a PQ of only **0.34** (measured across 296
+  photos with two or more annotators). Both pipelines score close to that human-level agreement.
+- ⏱ **More training did not help.** A partial run of a 100-epoch YOLO run converged near 0.40 mAP50-95 and the same public score band; the PyTorch pipeline scored 0.37 at both 10 and 15 epochs.
 
-**V3 repair:** The original V3 CSV had overlapping masks. The accepted repaired
-submission removes overlap without retraining:
 
-```bash
-mkdir -p "Kaggle Competition/cv_outputs/v3_repair"
-kaggle kernels output gregkoja/solar-filament-cv-v3 -p "Kaggle Competition/cv_outputs/v3_repair"
-python "Kaggle Competition/Python Files/submission_masks.py" \
-  "Kaggle Competition/cv_outputs/v3_repair/submission.csv" \
-  "Kaggle Competition/cv_outputs/v3_repair/submission_disjoint.csv" \
-  --test-dir "Kaggle Competition/data/MAGFiLO_1.0_Kaggle_2026/test" --min-area 20
-```
+- **The Sun's disk is worth identifying.** Fitting the rim, graying out the sky and flattening brightness raised the
+  per-pixel filament-versus-background separability (AUC) from about 0.78 to 0.83, and a black top-hat plus blur channel
+  reached about 0.89.
+- **Different models, same ceiling.** A YOLO pipeline and a Mask R-CNN pipeline, built very differently, landed on the
+  same 0.37.
 
-The repair writes a separate CSV and audit; submit the repaired file, not the
-original. It does not recalibrate the model or upload a submission.
+## Explore
 
-**Rebuild the reports and run checks** from the repository root in an
-environment with the plotting and notebook dependencies:
+| | |
+| --- | --- |
+| [**Table of contents**](TABLE_OF_CONTENTS.md) | Every notebook, report, script and piece of evidence |
+| [Solar Vision V13 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V13_maskrcnn_refiner.ipynb>) | PyTorch Mask R-CNN + U-Net refiner, 0.37 |
+| [YOLO V11 notebook](<Kaggle%20Competition/Notebooks/solar_filament_CV_V11_crop_refined.ipynb>) | YOLO11-seg + crop refiner + solar filters, 0.37 |
+| [Competition page](https://www.kaggle.com/competitions/filament-segmentation-2026) | Rules, data and leaderboard on Kaggle |
 
-```bash
-python -m pip install -r "Research/Academic Paper/requirements-figures.txt"
-python "Research/Academic Paper/plot_paper_v2.py"
-python "Research/Academic Paper/plot_pipeline_architectures.py"
-tectonic -X compile "Research/Academic Paper/SolarFilament_V2.tex" --outdir "Research/Academic Paper"
-tectonic -X compile "Research/Academic Paper/SolarFilament_V3.tex" --outdir "Research/Academic Paper"
-tectonic -X compile "Research/Academic Paper/SolarFilament_V4.tex" --outdir "Research/Academic Paper"
-PYTHONPATH="Kaggle Competition/Python Files" python -m unittest discover -s "Kaggle Competition/pythontests" -p 'test_*.py'
-```
-
-Additional model dependencies are listed in [Requirements/](Requirements/).
-
-## Document control and submission
-
-The current [V4 report](<Research/Academic%20Paper/SolarFilament_V4.pdf>) is the final
-draft including verified V7 submission 58336694 (0.26 PQ). Earlier paper drafts
-are retained. Preserve the reviewed PDF, repository revision, submission IDs,
-scores, and supporting artifacts. Local edits are not public until committed
-and pushed.
-
-The competition prediction submission does not replace the organizers' judging
-form and report upload. Check the form's current requirements and deadline.
+> The video shows baseline predictions beside human annotations. It includes training, tuning and holdout images, so it is a
+> qualitative review, not an independent performance measurement.
 
 ## Credentials and licensing
 
-Keep credentials in Kaggle Secrets or another secure credential store—never
-embed them in notebooks. Obtain competition data through Kaggle. The
-[MIT license](LICENSE) covers original project code; third-party datasets,
-templates, software, and pretrained weights retain their own terms.
+Keep credentials in Kaggle Secrets or another secure credential store, never in notebooks. Obtain the competition data
+through Kaggle. The [MIT license](LICENSE) covers original project code; third-party datasets, templates, software and
+pretrained weights keep their own terms.
 
-For CV/ML engineering or software collaboration, visit
-[Gregory&#39;s GitHub profile](https://github.com/Greg-Kojadinovich).
+<div align="center">
+
+# **Built for CV/ML engineering and applied research.** 
+
+## For collaboration, visit
+
+[Gregory's GitHub profile](https://github.com/Greg-Kojadinovich).
+
+</div>
