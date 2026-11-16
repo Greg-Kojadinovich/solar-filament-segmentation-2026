@@ -56,9 +56,6 @@
 <div align='center'>
 
 <br>
-<br>
-<br>
-<br>
 
 # **Two Pipeline Solutions, One Goal**
 
@@ -77,8 +74,6 @@
 | **Public score**     | **0.37**                                            | **0.37**                                        |
 
 
-<br>
-<br>
 <br>
 <br>
 
