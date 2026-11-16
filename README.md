@@ -15,15 +15,29 @@
 <a href="Research/Baseline%20Video/preview-60s.mp4">
   <img src="Research/Baseline%20Video/preview-60s.gif" alt="Solar filament segmentation review showing grayscale observations, human annotations, and predicted masks" width="100%">
 </a>
-
+<br>
+<br>
 
 <div align="center">
 
 # **Computer Vision & Applied Machine Learning**
 
+### YOLO Notebook Link
+
 <a href="Kaggle%20Competition/Notebooks/solar_filament_CV_V13_maskrcnn_refiner.ipynb"><img src="https://img.shields.io/badge/Solar%20Vision%20V13%20notebook%20%C2%B7%20PyTorch%20Mask%20R--CNN%20%C2%B7%200.37-3fb950?style=for-the-badge" height="56" alt="Solar Vision V13 notebook, PyTorch Mask R-CNN, 0.37"></a>
 <br>
+<br>
+<br>
+<br>
+
+### PyTorch Notebook Link
+
 <a href="Kaggle%20Competition/Notebooks/solar_filament_CV_V11_crop_refined.ipynb"><img src="https://img.shields.io/badge/YOLO%20V11%20notebook%20%C2%B7%20YOLO11--seg%20with%20solar%20filters%20%C2%B7%200.37-111F68?style=for-the-badge" height="56" alt="YOLO V11 notebook, YOLO11-seg with solar filters, 0.37"></a>
+
+
+<br>
+<br>
+
 
 ## Teaching computer vision to find and outline the Sun's filaments
 
@@ -41,6 +55,11 @@
 
 <div align='center'>
 
+<br>
+<br>
+<br>
+<br>
+
 # **Two Pipeline Solutions, One Goal**
 
 <div>
@@ -57,6 +76,12 @@
 | **Test-time voting** | 8 rotated and flipped views                               | 4 flipped views, up to 10 candidates each, voted down |
 | **Public score**     | **0.37**                                            | **0.37**                                        |
 
+
+<br>
+<br>
+<br>
+<br>
+
 ## The task
 
 What Are Solar Filaments?
@@ -66,18 +91,46 @@ Solar filaments are thin, dark, irregular ribbons of cool gas floating above the
 
 This project turns each grayscale solar photograph into **one clean mask per filament**: from scientific image ingestion and model training to measurable evaluation and validated competition submissions.
 
-|              **Input**              |      **Output**      |    **Score**    |
-| :---------------------------------------: | :-------------------------: | :-------------------: |
-| 2048 x 2048 grayscale H-alpha observation | One mask for every filament | Panoptic Quality (PQ) |
+<br>
+<br>
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <h3>Input</h3>
+      2048 x 2048 grayscale<br>H-alpha observation
+    </td>
+    <td align="center" width="33%">
+      <h3>Output</h3>
+      One mask for<br>every filament
+    </td>
+    <td align="center" width="33%">
+      <h3>Score</h3>
+      Panoptic Quality<br>(PQ)
+    </td>
+  </tr>
+</table>
+</div>
+
+<br>
+<br>
 
 ## How the score works
 
 Submissions are scored by **Panoptic Quality (PQ)**. A predicted mask counts as a match (a true positive, TP) when it
 overlaps a human-drawn filament with an intersection over union (IoU) above 0.5. Unmatched predictions are false positives (FP) and unmatched human filaments are false negatives (FN):
+<br>
+<br>
+<br>
 
 $$
 \mathrm{PQ} \;=\; \frac{\displaystyle\sum_{(p,\,g)\,\in\,\mathrm{TP}} \mathrm{IoU}(p,\,g)}{|\mathrm{TP}| \;+\; \tfrac{1}{2}\,|\mathrm{FP}| \;+\; \tfrac{1}{2}\,|\mathrm{FN}|}
 $$
+
+<br>
+<br>
+<br>
 
 PQ rewards masks that are both found and well outlined, and every extra or missed filament lowers the score. This is the standard PQ definition; the leaderboard's exact implementation is not published.
 
@@ -134,6 +187,8 @@ PQ rewards masks that are both found and well outlined, and every extra or misse
 
 Scores are whole-pipeline comparisons, not controlled experiments. Every full notebook is listed in the
 [table of contents](TABLE_OF_CONTENTS.md#notebooks-by-version).
+
+Top score is 0.7
 
 ## What we learned
 
