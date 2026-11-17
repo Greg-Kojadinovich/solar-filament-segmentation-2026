@@ -58,7 +58,14 @@
 <br>
 
 # **Two Pipeline Solutions, One Goal**
-
+## **Scored Top 27%**
+<br>
+Pipeline final score: 0.36
+<br>
+Top score in competition: 0.64
+<br>
+(430/1567)
+<br>
 <div>
 
 <p align="center">
@@ -183,12 +190,6 @@ PQ rewards masks that are both found and well outlined, and every extra or misse
 Scores are whole-pipeline comparisons, not controlled experiments. Every full notebook is listed in the
 [table of contents](TABLE_OF_CONTENTS.md#notebooks-by-version).
 
-Pipeline final score: 0.36
-
-Top score in competition: 0.64
-
-**Scored Top 27%**
-(430/1567)
 
 ## What we learned
 
