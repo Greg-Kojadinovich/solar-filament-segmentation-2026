@@ -58,13 +58,13 @@
 <br>
 
 # **Two Pipeline Solutions, One Goal**
-## **Scored Top 27%**
+## **Scored Top 22%**
 <br>
 Pipeline final score: 0.36
 <br>
-Top score in competition: 0.64
+Top score in competition: 0.54
 <br>
-(430/1567)
+(331/1468)
 <br>
 <div>
 
